@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using P2P.DoMain;
+using P2P;
 
 namespace P2P_1._00._04
 {
@@ -50,33 +51,7 @@ namespace P2P_1._00._04
             SqlHelper sh = new SqlHelper();
             String sql = "SELECT HSQD.GHR, Sum(HSQD.BJ) AS BJ, Sum(HSQD.SY) AS SY, Count(HSQD.GHR) AS GHRCount, HSQD.ZTID FROM HSQD GROUP BY HSQD.GHR, HSQD.ZTID;";
             DataTable dt = sh.ExeQuery1(sql);
-
-            List<HKXX> LHKXX = new List<HKXX>();
-            foreach (DataRow item in dt.Rows)
-            {
-                HKXX t = new HKXX();
-                // 获得此模型的公共属性  
-                PropertyInfo[] propertys = t.GetType().GetProperties();                //遍历该对象的所有属性  
-                string tempName = string.Empty;
-                foreach (PropertyInfo pi in propertys)
-                {
-                    tempName = pi.Name;//将属性名称赋值给临时变量                    //检查DataTable是否包含此列（列名==对象的属性名）    
-                    if (dt.Columns.Contains(tempName))
-                    {
-                        // 判断此属性是否有Setter  
-                        if (!pi.CanWrite) continue;//该属性不可写，直接跳出  
-                                                   //取值  
-                        object value = item[tempName];
-                        //如果非空，则赋给对象的属性  
-                        if (value != DBNull.Value)
-                            pi.SetValue(t, value, null);
-
-                    }
-                }
-                //对象添加到泛型集合中  
-
-                LHKXX.Add(t);
-            }
+            IList<HKXX> LHKXX = TableProcessing<HKXX>.ConvertToModel(dt);
             List<HKXX> LHKXX_Bat = LHKXX.Where(m => m.GHR == Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd")) && m.ZTID == 1).ToList();
             if(LHKXX_Bat.Count>0)
                 收益预览表.Rows.Add("今日", LHKXX_Bat[0].GHRCount, LHKXX_Bat[0].BJ, LHKXX_Bat[0].SY, LHKXX_Bat[0].BJ + LHKXX_Bat[0].SY);
