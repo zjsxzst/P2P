@@ -47,15 +47,20 @@ namespace P2P_1._00._04
         void 收益预览()
         {
             while (收益预览表.Rows.Count > 0) 收益预览表.Rows.RemoveAt(0); //逐条删除第一行
-            DateTime T = DateTime.Now, T1 = T;
+            DateTime T = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd")), T1 = T;
             SqlHelper sh = new SqlHelper();
             String sql = "SELECT HSQD.GHR, Sum(HSQD.BJ) AS BJ, Sum(HSQD.SY) AS SY, Count(HSQD.GHR) AS GHRCount, HSQD.ZTID FROM HSQD GROUP BY HSQD.GHR, HSQD.ZTID;";
             DataTable dt = sh.ExeQuery1(sql);
             IList<HKXX> LHKXX = TableProcessing<HKXX>.ConvertToModel(dt);
-            List<HKXX> LHKXX_Bat = LHKXX.Where(m => m.GHR == Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd")) && m.ZTID == 1).ToList();
+
+            List<HKXX> LHKXX_Bat = LHKXX.Where(m => m.GHR ==T && m.ZTID == 1).ToList();
             if(LHKXX_Bat.Count>0)
                 收益预览表.Rows.Add("今日", LHKXX_Bat[0].GHRCount, LHKXX_Bat[0].BJ, LHKXX_Bat[0].SY, LHKXX_Bat[0].BJ + LHKXX_Bat[0].SY);
 
+            T1 = sh.rq(T, "1",- 1);
+            LHKXX_Bat = LHKXX.Where(m => m.GHR == T1 && m.ZTID == 1).ToList();
+            if (LHKXX_Bat.Count > 0)
+                收益预览表.Rows.Add("今  日", LHKXX_Bat[0].GHRCount, LHKXX_Bat[0].BJ, LHKXX_Bat[0].SY, LHKXX_Bat[0].BJ + LHKXX_Bat[0].SY);
 
             int a = 0;
             ////double A = 0, B = 0, C = 0, D = 0, E = 0, F = 0;
