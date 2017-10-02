@@ -11,7 +11,12 @@ namespace P2P
     public class TableProcessing<T> where T : new()
     {
 
-            public static IList<T> ConvertToModel(DataTable dt)
+        /// <summary>
+        /// DataTable转List
+        /// </summary>
+        /// <param name="dt">数据</param>
+        /// <returns></returns>
+        public static IList<T> DataTableToList(DataTable dt)
             {
 
                 // 定义集合    
