@@ -28,5 +28,6 @@ namespace P2P.DoMain
         /// 次数
         /// </summary>
         public int GHRCount { get; set; }
+
     }
 }
