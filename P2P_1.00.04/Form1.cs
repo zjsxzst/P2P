@@ -29,9 +29,30 @@ namespace P2P_1._00._04
         private void Form1_Load(object sender, EventArgs e)
         {
             GBL();
-            收益预览();
+            逾期整理();
             操作日期.TodayDate = DateTime.Now;
             操作日期确认();
+        }
+        void 逾期整理()
+        {
+            SqlHelper sh = new SqlHelper();
+            DateTime T = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd")), T1 = sh.rq(T, "月", -3), T2 = sh.rq(T, "日", -1);
+            String sql =  string.Format("UPDATE [HSQD] SET ZTID=4 where ZTID=1 AND  GHR  < #{0}#", T ); // between = 日期之间 改为逾期
+            //String sql = string.Format("UPDATE [HSQD] SET ZTID=4 where ZTID=1 AND  GHR  between #{0}# and #{1}#  ", T1, T2); // between = 日期之间 改为逾期
+            ////sql[1] = string.Format("UPDATE [HSQD] SET ZTID=5 where ZTID=4 AND  GHR < #{0}# ", T1); //改为坏账
+            //sh = new SqlHelper();
+            DataTable dt   = sh.ExeQuery(sql);
+
+            //if (sh.DiaoYongShiWu(sql)) MessageBox.Show("如你所愿");
+            //else MessageBox.Show("输入失败"); //    事物调用
+        }
+        private void 坏账整理_Click(object sender, EventArgs e)
+        {
+            SqlHelper sh = new SqlHelper();
+            DateTime T = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd")), T1 = sh.rq(T, "月", -3), T2 = sh.rq(T, "日", -1);
+            String sql = string.Format("UPDATE [HSQD] SET ZTID=5 where ZTID=4 AND  GHR < #{0}# ", T1); //  //改为坏账
+            DataTable dt = sh.ExeQuery(sql);
+            定时1.Enabled = true ;
         }
         void GBL()
         {
@@ -46,115 +67,207 @@ namespace P2P_1._00._04
         } //关闭自动产生列
         void 收益预览()
         {
-            while (收益预览表.Rows.Count > 0) 收益预览表.Rows.RemoveAt(0); //逐条删除第一行
-            DateTime T = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd")), T1 = T;
             SqlHelper sh = new SqlHelper();
-            String sql = "SELECT HSQD.GHR, Sum(HSQD.BJ) AS BJ, Sum(HSQD.SY) AS SY, Count(HSQD.GHR) AS GHRCount, HSQD.ZTID FROM HSQD GROUP BY HSQD.GHR, HSQD.ZTID;";
-            DataTable dt = sh.ExeQuery1(sql);
-            IList<HKXX> LHKXX = TableProcessing<HKXX>.ConvertToModel(dt);
+            int GHRCount = 0;
+            decimal SY = 0, BJ = 0;
+            while (收益预览表.Rows.Count > 0) 收益预览表.Rows.RemoveAt(0); //逐条删除第一行
+            DateTime T = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd")), T1 = sh.rq(T, "月", -6), T2 = sh.rq(T, "月", 6);
 
-            List<HKXX> LHKXX_Bat = LHKXX.Where(m => m.GHR ==T && m.ZTID == 1).ToList();
-            if(LHKXX_Bat.Count>0)
-                收益预览表.Rows.Add("今日", LHKXX_Bat[0].GHRCount, LHKXX_Bat[0].BJ, LHKXX_Bat[0].SY, LHKXX_Bat[0].BJ + LHKXX_Bat[0].SY);
+            //String sql = "SELECT HSQD.GHR, Sum(HSQD.BJ) AS BJ, Sum(HSQD.SY) AS SY, Count(HSQD.GHR) AS GHRCount, HSQD.ZTID FROM HSQD GROUP BY HSQD.GHR, HSQD.ZTID;";
+            String sql = String.Format("SELECT HSQD.GHR, Sum(HSQD.BJ) AS BJ, Sum(HSQD.SY) AS SY, Count(HSQD.GHR) AS GHRCount, HSQD.ZTID FROM HSQD where  GHR>=#{0}# and GHR<=#{1}#   GROUP BY HSQD.GHR, HSQD.ZTID   order by GHR desc ",
+                           T1.ToShortDateString().ToString(), T2.ToShortDateString().ToString());
+            DataTable dt = sh.ExeQuery(sql);
+            IList<HKXX> LHKXX = TableProcessing<HKXX>.DataTableToList(dt);
+            List<HKXX> LHKXX_Bat = LHKXX.Where(m => m.GHR == T && m.ZTID == 1).ToList();
+            if (LHKXX_Bat.Count > 0)
+                收益预览表.Rows.Add("今 日 应 收", LHKXX_Bat[0].GHRCount, LHKXX_Bat[0].BJ, LHKXX_Bat[0].SY, LHKXX_Bat[0].BJ + LHKXX_Bat[0].SY);
 
-            T1 = sh.rq(T, "1",- 1);
+            T1 = sh.rq(T, "日", 1);
             LHKXX_Bat = LHKXX.Where(m => m.GHR == T1 && m.ZTID == 1).ToList();
             if (LHKXX_Bat.Count > 0)
-                收益预览表.Rows.Add("今  日", LHKXX_Bat[0].GHRCount, LHKXX_Bat[0].BJ, LHKXX_Bat[0].SY, LHKXX_Bat[0].BJ + LHKXX_Bat[0].SY);
+                收益预览表.Rows.Add("明 日 应 收", LHKXX_Bat[0].GHRCount, LHKXX_Bat[0].BJ, LHKXX_Bat[0].SY, LHKXX_Bat[0].BJ + LHKXX_Bat[0].SY);
 
-            int a = 0;
-            ////double A = 0, B = 0, C = 0, D = 0, E = 0, F = 0;
-            ////int Z = 0, G = 0;
+            T1 = sh.rq(T, "日", 7);
+            LHKXX_Bat = LHKXX.Where(m => m.GHR <= T1 && m.GHR >= T &&  m.ZTID == 1).ToList();
+            if (LHKXX_Bat.Count > 0)
+            {
+                GHRCount = 0; SY = 0; BJ = 0;
+                foreach (var item in LHKXX_Bat)
+                {
+                    BJ += item.BJ;
+                    SY += item.SY;
+                    GHRCount += item.GHRCount;
+                }
+                收益预览表.Rows.Add("一周内  应收", GHRCount, BJ, SY, BJ + SY);
+            }
+            T1 = sh.rq(T, "月", 3);
+            LHKXX_Bat = LHKXX.Where(m => m.GHR <= T1 && m.GHR >= T && m.ZTID == 1).ToList();
+            if (LHKXX_Bat.Count > 0)
+            {
+                GHRCount = 0; SY = 0; BJ = 0;
+                foreach (var item in LHKXX_Bat)
+                {
+                    BJ += item.BJ;
+                    SY += item.SY;
+                    GHRCount += item.GHRCount;
+                }
+                收益预览表.Rows.Add("未来3月应收", GHRCount, BJ, SY, BJ + SY);
+            }
+            T1 = sh.rq(T, "月", 6);
+            LHKXX_Bat = LHKXX.Where(m => m.GHR <= T1 && m.GHR >= T && m.ZTID == 1).ToList();
+            if (LHKXX_Bat.Count > 0)
+            {
+                GHRCount = 0; SY = 0; BJ = 0;
+                foreach (var item in LHKXX_Bat)
+                {
+                    BJ += item.BJ;
+                    SY += item.SY;
+                    GHRCount += item.GHRCount;
+                }
+                收益预览表.Rows.Add("未来6月应收", GHRCount, BJ, SY, BJ + SY);
+            }
 
-            ////String sql = String.Format("SELECT sum(BJ) AS A, SUM(SY) AS B ,count(*) as  cnt FROM  HSQD  where  GHR  between  #{0}# and #{1}#  AND  ZTID=1",
-            ////     T.ToShortDateString().ToString(), T.ToShortDateString().ToString());
-            ////DataTable dt = sh.ExeQuery1(sql);
-            ////Z = int.Parse(dt.Rows[0][2].ToString());
-            ////A = double.Parse(dt.Rows[0][0].ToString());
-            ////B = double.Parse(dt.Rows[0][1].ToString());
-            ////C = A + B; G = G + Z; D = D + A; E = E + B; F = F + C;  收益预览表.Rows.Add("今    日", Z, A, B, C);
+            //收益预览表.Rows.Add(" ", " ", " ", " ", " ");
 
-            ////T1 = sh.rq(T, "1", 1);
-            ////sql = String.Format("SELECT sum(BJ) AS A, SUM(SY) AS B ,count(*) as  cnt FROM  HSQD  where  GHR  between  #{0}# and #{1}#  AND  ZTID=1 ",
-            ////                T1.ToShortDateString().ToString(), T1.ToShortDateString().ToString());
-            ////dt = sh.ExeQuery1(sql);
-            ////Z = int.Parse(dt.Rows[0][2].ToString());
-            ////A = double.Parse(dt.Rows[0][0].ToString());
-            ////B = double.Parse(dt.Rows[0][1].ToString());
-            ////C = A + B; G = G + Z; D = D + A; E = E + B; F = F + C;    收益预览表.Rows.Add("明    日",Z, A, B, C);
+            T1 = sh.rq(T, "日", -1);
+            LHKXX_Bat = LHKXX.Where(m => m.GHR == T1 && m.ZTID < 4 && m.ZTID > 1).ToList();
+            if (LHKXX_Bat.Count > 0)
+            {
+                  GHRCount = 0;  SY = 0; BJ = 0;
+                foreach (var item in LHKXX_Bat)
+                {
+                    BJ += item.BJ;
+                    SY += item.SY;
+                    GHRCount += item.GHRCount;
+                }
+                收益预览表.Rows.Add("昨 日 已 收", GHRCount, BJ, SY, BJ + SY);
+            }
 
-            //////收益预览表.Rows.Add("未来一周", 1, 2, 3, 5);
-            //////收益预览表.Rows.Add("未来一月", 1, 2, 3, 5);
-            //////收益预览表.Rows.Add("未来三月", 1, 2, 3, 5);
-            //////收益预览表.Rows.Add("未来六月", 1, 2, 3, 5);
+            T1 = sh.rq(T, "日", -7);
+            LHKXX_Bat = LHKXX.Where(m => m.GHR >= T1 && m.GHR < T && m.ZTID < 4 && m.ZTID > 1).ToList();
+            if (LHKXX_Bat.Count > 0)
+            {
+                GHRCount = 0; SY = 0; BJ = 0;
+                foreach (var item in LHKXX_Bat)
+                {
+                    BJ += item.BJ;
+                    SY += item.SY;
+                    GHRCount += item.GHRCount;
+                }
+                收益预览表.Rows.Add("一周内  已收", GHRCount, BJ, SY, BJ + SY);
+            }
 
-            ////T1 = sh.rq(T, "1", -1);
-            ////sql = String.Format("SELECT sum(BJ) AS A, SUM(SY) AS B ,count(*) as  cnt FROM  HSQD  where  GHR  between  #{0}# and #{1}#   AND  ZTID=2",
-            ////               T1.ToShortDateString().ToString(), T1.ToShortDateString().ToString());
-            ////dt = sh.ExeQuery1(sql);
-            ////Z = int.Parse(dt.Rows[0][2].ToString());
-            ////A = double.Parse(dt.Rows[0][0].ToString());
-            ////B = double.Parse(dt.Rows[0][1].ToString());
-            ////C = A + B; G = G + Z; D = D + A; E = E + B; F = F + C; 收益预览表.Rows.Add("昨    日", Z, A, B, C);
-            ////List<testc> ss = new List<testc>();
-            ////ss.Where(m => m.列明 == "x");
+            T1 = sh.rq(T, "月", -3);
+            LHKXX_Bat = LHKXX.Where(m => m.GHR >= T1 && m.GHR <= T && m.ZTID < 4 && m.ZTID > 1).ToList();
+            if (LHKXX_Bat.Count > 0)
+            {
+                GHRCount = 0; SY = 0; BJ = 0;
+                foreach (var item in LHKXX_Bat)
+                {
+                    BJ += item.BJ;
+                    SY += item.SY;
+                    GHRCount += item.GHRCount;
+                }
+                收益预览表.Rows.Add("过去3月已收", GHRCount, BJ, SY, BJ + SY);
+            }
+            T1 = sh.rq(T, "月", -6);
+            LHKXX_Bat = LHKXX.Where(m => m.GHR >= T1 && m.GHR <= T && m.ZTID < 4 && m.ZTID > 1).ToList();
+            if (LHKXX_Bat.Count > 0)
+            {
+                GHRCount = 0; SY = 0; BJ = 0;
+                foreach (var item in LHKXX_Bat)
+                {
+                    BJ += item.BJ;
+                    SY += item.SY;
+                    GHRCount += item.GHRCount;
+                }
+                收益预览表.Rows.Add("过去6月已收", GHRCount, BJ, SY, BJ + SY);
+            }
+            //收益预览表.Rows.Add(" ", " ", " ", " ", " ");
+            T1 = sh.rq(T, "月", -3);
+            LHKXX_Bat = LHKXX.Where(m => m.GHR >= T1 && m.GHR <= T && m.ZTID == 4).ToList();
+            if (LHKXX_Bat.Count > 0)
+            {
+                GHRCount = 0; SY = 0; BJ = 0;
+                foreach (var item in LHKXX_Bat)
+                {
+                    BJ += item.BJ;
+                    SY += item.SY;
+                    GHRCount += item.GHRCount;
+                } 
+                收益预览表.Rows.Add("逾   期   中", GHRCount, BJ, SY, BJ + SY);
+            }
 
-            //////收益预览表.Rows.Add("过去一周", 1, 2, 3, 5);
-            //////收益预览表.Rows.Add("过去一月", 1, 2, 3, 5);
-            //////收益预览表.Rows.Add("过去三月", 1, 2, 3, 5);
-            //////收益预览表.Rows.Add("过去六月", 1, 2, 3, 5);
-            ////收益预览表.Rows.Add("总    计", G, D, E, F);
+           sql = "SELECT HSQD.GHR, Sum(HSQD.BJ) AS BJ, Sum(HSQD.SY) AS SY, Count(HSQD.GHR) AS GHRCount, HSQD.ZTID FROM HSQD  where ZTID=5  GROUP BY HSQD.GHR, HSQD.ZTID ;";
+
+            //sql = "SELECT sum(BJ) AS A, SUM(SY) AS B ,count(*) as  cnt FROM  HSQD  ";
+            dt = sh.ExeQuery(sql);
+            LHKXX = TableProcessing<HKXX>.DataTableToList(dt);
+            LHKXX_Bat = LHKXX.Where(m =>  m.ZTID == 5).ToList();
+            if (LHKXX_Bat.Count > 0)
+            {
+                if (LHKXX_Bat.Count > 0)
+                {
+                    GHRCount = 0; SY = 0; BJ = 0;
+                    foreach (var item in LHKXX_Bat)
+                    {
+                        BJ += item.BJ;
+                        SY += item.SY;
+                        GHRCount += item.GHRCount;
+                    }
+                    收益预览表.Rows.Add("坏       账", GHRCount, BJ, SY, BJ + SY);
+                }
+            }
         }
         #region  折叠代码 网页浏览
         private void WY1_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("iexplore.exe", WY1.Tag.ToString());
+            System.Diagnostics.Process.Start("chrome.exe", WY1.Tag.ToString()); //("iexplore.exe", WY1.Tag.ToString());
         }
         private void WY2_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("iexplore.exe", WY2.Tag.ToString());
+            System.Diagnostics.Process.Start("chrome.exe", WY2.Tag.ToString());
         }
 
         private void WY3_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("iexplore.exe", WY3.Tag.ToString());
+            System.Diagnostics.Process.Start("chrome.exe", WY3.Tag.ToString());
         }
         private void WY4_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("iexplore.exe", WY4.Tag.ToString());
+            System.Diagnostics.Process.Start("chrome.exe", WY4.Tag.ToString());
         }
         private void WY5_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("iexplore.exe", WY5.Tag.ToString());
+            System.Diagnostics.Process.Start("chrome.exe", WY5.Tag.ToString());
         }
         private void WY6_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("iexplore.exe", WY6.Tag.ToString());
+            System.Diagnostics.Process.Start("chrome.exe", WY6.Tag.ToString());
         }
         private void WY7_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("iexplore.exe", WY7.Tag.ToString());
+            System.Diagnostics.Process.Start("chrome.exe", WY7.Tag.ToString());
         }
 
         private void WY8_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("iexplore.exe", WY8.Tag.ToString());
+            System.Diagnostics.Process.Start("chrome.exe", WY8.Tag.ToString());
         }
         private void WY9_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("iexplore.exe", WY9.Tag.ToString());
+            System.Diagnostics.Process.Start("chrome.exe", WY9.Tag.ToString());
         }
         private void WY10_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("iexplore.exe", WY10.Tag.ToString());
+            System.Diagnostics.Process.Start("chrome.exe", WY10.Tag.ToString());
         }
         private void WY11_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("iexplore.exe", WY11.Tag.ToString());
+            System.Diagnostics.Process.Start("chrome.exe", WY11.Tag.ToString());
         }
 
         #endregion
-
         private void 操作日期_DateSelected(object sender, DateRangeEventArgs e)
         {
             操作日期确认();
@@ -165,7 +278,6 @@ namespace P2P_1._00._04
             //dt = 操作日期.SelectionStart;
             预览日期.Text = 操作日期.SelectionStart.ToShortDateString().ToString();
         }
-
         private void 多页_Selecting(object sender, TabControlCancelEventArgs e)
         {
             KG = false;
@@ -179,10 +291,12 @@ namespace P2P_1._00._04
                     break;
             }
         }
-
-        private void 收益预览表_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void 定时1_Tick(object sender, EventArgs e)
         {
-
+            定时1.Enabled = false;
+            收益预览();
         }
+
+
     }
 }

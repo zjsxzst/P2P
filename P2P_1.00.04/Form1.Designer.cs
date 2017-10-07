@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.多页 = new System.Windows.Forms.TabControl();
             this.关注信息 = new System.Windows.Forms.TabPage();
             this.操作日期选择 = new System.Windows.Forms.GroupBox();
@@ -70,6 +71,8 @@
             this.账户列表 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.定时1 = new System.Windows.Forms.Timer(this.components);
+            this.坏账整理 = new System.Windows.Forms.Button();
             this.多页.SuspendLayout();
             this.关注信息.SuspendLayout();
             this.操作日期选择.SuspendLayout();
@@ -107,6 +110,7 @@
             // 
             // 操作日期选择
             // 
+            this.操作日期选择.Controls.Add(this.坏账整理);
             this.操作日期选择.Controls.Add(this.预览日期);
             this.操作日期选择.Controls.Add(this.预览操作日期);
             this.操作日期选择.Controls.Add(this.操作日期);
@@ -122,7 +126,7 @@
             this.预览日期.AutoSize = true;
             this.预览日期.Cursor = System.Windows.Forms.Cursors.Hand;
             this.预览日期.Font = new System.Drawing.Font("宋体", 13F);
-            this.预览日期.Location = new System.Drawing.Point(84, 290);
+            this.预览日期.Location = new System.Drawing.Point(84, 263);
             this.预览日期.Name = "预览日期";
             this.预览日期.Size = new System.Drawing.Size(98, 18);
             this.预览日期.TabIndex = 39;
@@ -134,7 +138,7 @@
             this.预览操作日期.AutoSize = true;
             this.预览操作日期.Cursor = System.Windows.Forms.Cursors.Hand;
             this.预览操作日期.Font = new System.Drawing.Font("宋体", 13F);
-            this.预览操作日期.Location = new System.Drawing.Point(48, 257);
+            this.预览操作日期.Location = new System.Drawing.Point(48, 235);
             this.预览操作日期.Name = "预览操作日期";
             this.预览操作日期.Size = new System.Drawing.Size(134, 18);
             this.预览操作日期.TabIndex = 38;
@@ -170,17 +174,16 @@
             this.预览本金,
             this.预览收益,
             this.预览合计});
-            this.收益预览表.Location = new System.Drawing.Point(10, 34);
+            this.收益预览表.Location = new System.Drawing.Point(10, 36);
             this.收益预览表.Name = "收益预览表";
             this.收益预览表.RowTemplate.Height = 23;
             this.收益预览表.Size = new System.Drawing.Size(403, 299);
             this.收益预览表.TabIndex = 33;
-            this.收益预览表.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.收益预览表_CellContentClick);
             // 
             // 时间段
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.时间段.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.时间段.DefaultCellStyle = dataGridViewCellStyle6;
             this.时间段.Frozen = true;
             this.时间段.HeaderText = "时间段";
             this.时间段.MaxInputLength = 10;
@@ -191,10 +194,10 @@
             // 
             // 预览笔数
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.Format = "N0";
-            dataGridViewCellStyle2.NullValue = null;
-            this.预览笔数.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.Format = "N0";
+            dataGridViewCellStyle7.NullValue = null;
+            this.预览笔数.DefaultCellStyle = dataGridViewCellStyle7;
             this.预览笔数.Frozen = true;
             this.预览笔数.HeaderText = "笔数";
             this.预览笔数.MaxInputLength = 10;
@@ -204,10 +207,10 @@
             // 
             // 预览本金
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.Format = "N2";
-            dataGridViewCellStyle3.NullValue = null;
-            this.预览本金.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.Format = "N2";
+            dataGridViewCellStyle8.NullValue = null;
+            this.预览本金.DefaultCellStyle = dataGridViewCellStyle8;
             this.预览本金.Frozen = true;
             this.预览本金.HeaderText = "本金";
             this.预览本金.MaxInputLength = 10;
@@ -217,10 +220,10 @@
             // 
             // 预览收益
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.Format = "N2";
-            dataGridViewCellStyle4.NullValue = null;
-            this.预览收益.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.Format = "N2";
+            dataGridViewCellStyle9.NullValue = null;
+            this.预览收益.DefaultCellStyle = dataGridViewCellStyle9;
             this.预览收益.Frozen = true;
             this.预览收益.HeaderText = "收益";
             this.预览收益.MaxInputLength = 10;
@@ -230,9 +233,9 @@
             // 
             // 预览合计
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.Format = "N2";
-            this.预览合计.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.Format = "N2";
+            this.预览合计.DefaultCellStyle = dataGridViewCellStyle10;
             this.预览合计.Frozen = true;
             this.预览合计.HeaderText = "合计";
             this.预览合计.MaxInputLength = 10;
@@ -518,6 +521,22 @@
             this.Column2.HeaderText = "账户名称";
             this.Column2.Name = "Column2";
             // 
+            // 定时1
+            // 
+            this.定时1.Enabled = true;
+            this.定时1.Interval = 500;
+            this.定时1.Tick += new System.EventHandler(this.定时1_Tick);
+            // 
+            // 坏账整理
+            // 
+            this.坏账整理.Location = new System.Drawing.Point(74, 292);
+            this.坏账整理.Name = "坏账整理";
+            this.坏账整理.Size = new System.Drawing.Size(108, 52);
+            this.坏账整理.TabIndex = 40;
+            this.坏账整理.Text = "按系统日期\r\n\r\n整理坏账";
+            this.坏账整理.UseVisualStyleBackColor = true;
+            this.坏账整理.Click += new System.EventHandler(this.坏账整理_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -581,6 +600,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn 预览本金;
         private System.Windows.Forms.DataGridViewTextBoxColumn 预览收益;
         private System.Windows.Forms.DataGridViewTextBoxColumn 预览合计;
+        private System.Windows.Forms.Timer 定时1;
+        private System.Windows.Forms.Button 坏账整理;
     }
 }
 

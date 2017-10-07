@@ -134,19 +134,26 @@ public class SqlHelper
         for (int i = 0; i < bytHash.Length; i++)
             sTemp += bytHash[i].ToString("X").PadLeft(2, '0');
         return sTemp;
-    } //
+    }
+    /// <summary>
+    /// 计算日子(参照日子,处理对象, 增减日子）
+    /// </summary>
+    /// <param name="A"> 参照日子</param>
+    /// <param name="B">年 or 月 or 日</param>
+    /// <param name="C"> + or -  数字 </param>
+    /// <returns></returns>
     public DateTime rq(DateTime A, string B, int C)
     {
         DateTime A1 = A.AddDays(C);
         switch (B)
         {
-            case "1": //"天标"
-                A1 = A.AddDays(C);//减少20天
+            case "天": //"天标"
+                A1 = A.AddDays(C);//曾减  X 天
                 break;
-            case "2": //"月标"
-                A1 = A.AddMonths(C);//减少20天;    // 算成月息
+            case "月": //"月标"
+                A1 = A.AddMonths(C);//曾减 X 月;    // 算成月息
                 break;
-            case "3": //"年标"
+            case "年": //"年标"
                 A1 = A.AddYears(C);
                 break;
                 //    //default:
