@@ -62,4 +62,13 @@ namespace P2P.DoMain
         public Decimal 逾期已收 { get; set; }
         public Decimal 坏账 { get; set; }
     }
+    public class HKFX1
+    {
+        public String 平台名称 { get; set; }
+        public double 提前回款 { get; set; }
+        public double 正常回款 { get; set; }
+        public double 逾期未收 { get; set; }
+        public double 逾期已收 { get; set; }
+        public double 坏账 { get; set; }
+    }
 }

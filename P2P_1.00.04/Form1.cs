@@ -586,48 +586,94 @@ namespace P2P_1._00._04
 
         private void 收款次数_CheckedChanged(object sender, EventArgs e)
         {
-            分析();
+            分析1();
         }
         void 分析()
         {
             SqlHelper sh = new SqlHelper();
             String sql = "";
-            if (收款次数.Checked) sql = "SELECT * FROM C_CS ";
-            if (收款金额.Checked) sql = "SELECT * FROM  C_JE";
+            if (收款金额.Checked) { sql = "SELECT * FROM  C_JE";
             DataTable dt = sh.ExeQuery(sql);
             IList<HKFX> HKFX = TableProcessing<HKFX>.DataTableToList(dt);
-            //List<HKXX> LHKXX_Bat = LHKXX.Where(m => m.GHR == T && m.ZTID == 1).ToList();
-            if (HKFX.Count > 0)
-            {
-                Decimal A = 0;
-                int i = 0;
-                //string[] xValues = new string[HKFX.Count];
-                //Decimal[] yValues = new Decimal[HKFX.Count], y1Values = new Decimal[HKFX.Count], y2Values = new Decimal[HKFX.Count], y3Values = new Decimal[HKFX.Count], y4Values = new Decimal[HKFX.Count];
-                List<string> xValues = new List<string>();
-                List<Decimal> yValues = new List<decimal>();
-                List<Decimal> y1Values = new List<decimal>();
-                List<Decimal> y2Values = new List<decimal>();
-                List<Decimal> y3Values = new List<decimal>();
-                List<Decimal> y4Values = new List<decimal>();
-                foreach (var item in HKFX)
+                //List<HKXX> LHKXX_Bat = LHKXX.Where(m => m.GHR == T && m.ZTID == 1).ToList();
+                if (HKFX.Count > 0)
                 {
-                    A = item.提前回款 + item.正常回款 + item.逾期未收 + item.逾期已收 + item.坏账;
-                    if (A>0)
+                    Decimal A = 0;
+                    int i = 0;
+                    //string[] xValues = new string[HKFX.Count];
+                    //Decimal[] yValues = new Decimal[HKFX.Count], y1Values = new Decimal[HKFX.Count], y2Values = new Decimal[HKFX.Count], y3Values = new Decimal[HKFX.Count], y4Values = new Decimal[HKFX.Count];
+                    List<string> xValues = new List<string>();
+                    List<Decimal> yValues = new List<decimal>();
+                    List<Decimal> y1Values = new List<decimal>();
+                    List<Decimal> y2Values = new List<decimal>();
+                    List<Decimal> y3Values = new List<decimal>();
+                    List<Decimal> y4Values = new List<decimal>();
+                    foreach (var item in HKFX)
                     {
-                        yValues.Add(decimal.Round(item.提前回款 / A * 100, 0));
+                        A = item.提前回款 + item.正常回款 + item.逾期未收 + item.逾期已收 + item.坏账;
+                        if (A > 0)
+                        {
+                            yValues.Add(decimal.Round(item.提前回款 / A * 100, 0));
 
-                        y1Values.Add(decimal.Round(item.正常回款 / A * 100, 0));
-                        y2Values.Add( decimal.Round(item.逾期未收 / A * 100, 0));
-                        y3Values.Add( decimal.Round(item.逾期已收 / A * 100, 0));
-                        y4Values.Add( decimal.Round(item.坏账 / A * 100, 0));
-                        xValues.Add( item.平台名称);
+                            y1Values.Add(decimal.Round(item.正常回款 / A * 100, 0));
+                            y2Values.Add(decimal.Round(item.逾期未收 / A * 100, 0));
+                            y3Values.Add(decimal.Round(item.逾期已收 / A * 100, 0));
+                            y4Values.Add(decimal.Round(item.坏账 / A * 100, 0));
+                            xValues.Add(item.平台名称);
+                        }
                     }
+                    chart3.Series["提前回款"].Points.DataBindXY(xValues, yValues);
+                    chart3.Series["正常回款"].Points.DataBindXY(xValues, y1Values);
+                    chart3.Series["逾期未收"].Points.DataBindXY(xValues, y2Values);
+                    chart3.Series["逾期已收"].Points.DataBindXY(xValues, y3Values);
+                    chart3.Series["坏账"].Points.DataBindXY(xValues, y4Values);
                 }
-                chart3.Series["提前回款"].Points.DataBindXY(xValues, yValues);
-                chart3.Series["正常回款"].Points.DataBindXY(xValues, y1Values);
-                chart3.Series["逾期未收"].Points.DataBindXY(xValues, y2Values);
-                chart3.Series["逾期已收"].Points.DataBindXY(xValues, y3Values);
-                chart3.Series["坏账"].Points.DataBindXY(xValues, y4Values);
+            }
+        }
+        void 分析1()
+        {
+            SqlHelper sh = new SqlHelper();
+            String sql = "";
+            if (收款次数.Checked)
+            {
+                sql = "SELECT * FROM C_CS ";
+                DataTable dt = sh.ExeQuery(sql);
+                IList<HKFX1> HKFX = TableProcessing<HKFX1>.DataTableToList(dt);
+                //List<HKXX> LHKXX_Bat = LHKXX.Where(m => m.GHR == T && m.ZTID == 1).ToList();
+                if (HKFX.Count > 0)
+                {
+                    double A = 0;
+                    int i = 0;
+                    //string[] xValues = new string[HKFX.Count];
+                    //Decimal[] yValues = new Decimal[HKFX.Count], y1Values = new Decimal[HKFX.Count], y2Values = new Decimal[HKFX.Count], y3Values = new Decimal[HKFX.Count], y4Values = new Decimal[HKFX.Count];
+                    List<string> xValues = new List<string>();
+                    List<double> yValues = new List<double>();
+                    List<double> y1Values = new List<double>();
+                    List<double> y2Values = new List<double>();
+                    List<double> y3Values = new List<double>();
+                    List<double> y4Values = new List<double>();
+                    foreach (var item in HKFX)
+                    {
+                        A = item.提前回款 + item.正常回款 + item.逾期未收 + item.逾期已收 + item.坏账;
+                        if (A > 0)
+                        {
+
+                            yValues.Add(Math.Round(item.提前回款 / A * 100, 0));
+
+                            y1Values.Add(Math.Round(item.正常回款 / A * 100, 0));
+                            y2Values.Add(Math.Round(item.逾期未收 / A * 100, 0));
+                            y3Values.Add(Math.Round(item.逾期已收 / A * 100, 0));
+                            y4Values.Add(Math.Round(item.坏账 / A * 100, 0));
+                            xValues.Add(item.平台名称);
+                        }
+                    }
+                    chart3.Series["提前回款"].Points.DataBindXY(xValues, yValues);
+                    chart3.Series["正常回款"].Points.DataBindXY(xValues, y1Values);
+                    chart3.Series["逾期未收"].Points.DataBindXY(xValues, y2Values);
+                    chart3.Series["逾期已收"].Points.DataBindXY(xValues, y3Values);
+                    chart3.Series["坏账"].Points.DataBindXY(xValues, y4Values);
+                }
+               
             }
         }
         void XULIE(String A, ComboBox C, String D, String D1)
