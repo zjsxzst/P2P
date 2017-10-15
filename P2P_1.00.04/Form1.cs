@@ -32,6 +32,8 @@ namespace P2P_1._00._04
             操作日期.TodayDate = DateTime.Now;
             操作日期确认();
             收益预览();
+            chart1.Series[0]["PieLabelStyle"] = "Outside";//将文字移到外侧
+            chart1.Series[0]["PieLineColor"] = "Black";//绘制黑色的连线。
             KG = true;
         }
         private void 逾期整理_Click(object sender, EventArgs e)
@@ -590,8 +592,8 @@ namespace P2P_1._00._04
         {
             SqlHelper sh = new SqlHelper();
             String sql = "";
-            if (收款次数.Checked) sql = "SELECT * FROM C_JE ";
-            if (收款金额.Checked) sql = "SELECT * FROM C_CS ";
+            if (收款次数.Checked) sql = "SELECT * FROM C_CS ";
+            if (收款金额.Checked) sql = "SELECT * FROM  C_JE";
             DataTable dt = sh.ExeQuery(sql);
             IList<HKFX> HKFX = TableProcessing<HKFX>.DataTableToList(dt);
             //List<HKXX> LHKXX_Bat = LHKXX.Where(m => m.GHR == T && m.ZTID == 1).ToList();
@@ -623,8 +625,8 @@ namespace P2P_1._00._04
                 }
                 chart3.Series["提前回款"].Points.DataBindXY(xValues, yValues);
                 chart3.Series["正常回款"].Points.DataBindXY(xValues, y1Values);
-                //chart3.Series["逾期未收"].Points.DataBindXY(xValues, y2Values);
-                //chart3.Series["逾期已收"].Points.DataBindXY(xValues, y3Values);
+                chart3.Series["逾期未收"].Points.DataBindXY(xValues, y2Values);
+                chart3.Series["逾期已收"].Points.DataBindXY(xValues, y3Values);
                 chart3.Series["坏账"].Points.DataBindXY(xValues, y4Values);
             }
         }
