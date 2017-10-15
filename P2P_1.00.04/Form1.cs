@@ -599,29 +599,33 @@ namespace P2P_1._00._04
             {
                 Decimal A = 0;
                 int i = 0;
-                string[] xValues = new string[HKFX.Count];
-                Decimal[] yValues = new Decimal[HKFX.Count], y1Values = new Decimal[HKFX.Count], y2Values = new Decimal[HKFX.Count], y3Values = new Decimal[HKFX.Count], y4Values = new Decimal[HKFX.Count];
-
+                //string[] xValues = new string[HKFX.Count];
+                //Decimal[] yValues = new Decimal[HKFX.Count], y1Values = new Decimal[HKFX.Count], y2Values = new Decimal[HKFX.Count], y3Values = new Decimal[HKFX.Count], y4Values = new Decimal[HKFX.Count];
+                List<string> xValues = new List<string>();
+                List<Decimal> yValues = new List<decimal>();
+                List<Decimal> y1Values = new List<decimal>();
+                List<Decimal> y2Values = new List<decimal>();
+                List<Decimal> y3Values = new List<decimal>();
+                List<Decimal> y4Values = new List<decimal>();
                 foreach (var item in HKFX)
                 {
                     A = item.提前回款 + item.正常回款 + item.逾期未收 + item.逾期已收 + item.坏账;
                     if (A>0)
                     {
-                        yValues[i] = decimal.Round(item.提前回款 / A*100 , 0);
-                        y1Values[i] = decimal.Round(item.正常回款 / A * 100, 0);
-                        y2Values[i] = decimal.Round(item.逾期未收 / A * 100, 0);
-                        y3Values[i] = decimal.Round(item.逾期已收 / A * 100, 0);
-                        y4Values[i] = decimal.Round(item.坏账 / A * 100, 0);
-                        xValues[i] = item.平台名称;
-                        i++;
+                        yValues.Add(decimal.Round(item.提前回款 / A * 100, 0));
+
+                        y1Values.Add(decimal.Round(item.正常回款 / A * 100, 0));
+                        y2Values.Add( decimal.Round(item.逾期未收 / A * 100, 0));
+                        y3Values.Add( decimal.Round(item.逾期已收 / A * 100, 0));
+                        y4Values.Add( decimal.Round(item.坏账 / A * 100, 0));
+                        xValues.Add( item.平台名称);
                     }
                 }
-
-                chart3.Series["提前回款"].Points.DataBindXY((xValues, yValues);
-                chart3.Series["正常回款"].Points.DataBindXY((xValues, y1Values);
-                chart3.Series["逾期未收"].Points.DataBindXY((xValues, y2Values);
-                chart3.Series["逾期已收"].Points.DataBindXY((xValues, y3Values);
-                chart3.Series["坏账"].Points.DataBindXY((xValues, y4Values);
+                chart3.Series["提前回款"].Points.DataBindXY(xValues, yValues);
+                chart3.Series["正常回款"].Points.DataBindXY(xValues, y1Values);
+                //chart3.Series["逾期未收"].Points.DataBindXY(xValues, y2Values);
+                //chart3.Series["逾期已收"].Points.DataBindXY(xValues, y3Values);
+                chart3.Series["坏账"].Points.DataBindXY(xValues, y4Values);
             }
         }
         void XULIE(String A, ComboBox C, String D, String D1)
