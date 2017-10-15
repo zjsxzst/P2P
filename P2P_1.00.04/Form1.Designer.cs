@@ -29,54 +29,60 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle70 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle71 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle72 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle73 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle74 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle75 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle76 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle77 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle78 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle79 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle80 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle81 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle82 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle83 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle84 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle85 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle86 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle87 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend10 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series31 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series32 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series33 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series34 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea11 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend11 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series35 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea12 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend12 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series36 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series37 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series38 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series39 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series40 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle88 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle89 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle90 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle91 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle92 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle162 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle163 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle164 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle165 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle166 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle167 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle168 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle169 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle170 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle171 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle172 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle173 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle174 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle175 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle176 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle177 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle178 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle179 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle180 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle181 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle182 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle183 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle184 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea23 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend23 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series76 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series77 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series78 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series79 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea24 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend24 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series80 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea22 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend22 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series71 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series72 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series73 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series74 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series75 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.多页 = new System.Windows.Forms.TabControl();
             this.关注信息 = new System.Windows.Forms.TabPage();
             this.操作日期选择 = new System.Windows.Forms.GroupBox();
+            this.逾期整理 = new System.Windows.Forms.Button();
             this.坏账整理 = new System.Windows.Forms.Button();
             this.预览日期 = new System.Windows.Forms.Label();
             this.预览操作日期 = new System.Windows.Forms.Label();
             this.操作日期 = new System.Windows.Forms.MonthCalendar();
             this.预览回款 = new System.Windows.Forms.GroupBox();
             this.收益预览表 = new System.Windows.Forms.DataGridView();
+            this.时间段 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.预览笔数 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.预览本金 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.预览收益 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.预览合计 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.安全信息 = new System.Windows.Forms.GroupBox();
             this.预览警告 = new System.Windows.Forms.Label();
             this.WY1 = new System.Windows.Forms.Label();
@@ -183,19 +189,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.回款分析 = new System.Windows.Forms.TabPage();
+            this.收款金额 = new System.Windows.Forms.RadioButton();
+            this.收款次数 = new System.Windows.Forms.RadioButton();
             this.chart3 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.定时1 = new System.Windows.Forms.Timer(this.components);
             this.回款统计2 = new System.Windows.Forms.RadioButton();
             this.回款统计1 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.逾期整理 = new System.Windows.Forms.Button();
-            this.时间段 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.预览笔数 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.预览本金 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.预览收益 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.预览合计 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.多页.SuspendLayout();
             this.关注信息.SuspendLayout();
             this.操作日期选择.SuspendLayout();
@@ -218,7 +218,7 @@
             this.平台比重.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
-            this.tabPage2.SuspendLayout();
+            this.回款分析.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart3)).BeginInit();
             this.SuspendLayout();
             // 
@@ -231,7 +231,7 @@
             this.多页.Controls.Add(this.投资管理);
             this.多页.Controls.Add(this.赎回管理);
             this.多页.Controls.Add(this.平台比重);
-            this.多页.Controls.Add(this.tabPage2);
+            this.多页.Controls.Add(this.回款分析);
             this.多页.Location = new System.Drawing.Point(2, 2);
             this.多页.Name = "多页";
             this.多页.SelectedIndex = 0;
@@ -265,6 +265,16 @@
             this.操作日期选择.TabIndex = 38;
             this.操作日期选择.TabStop = false;
             this.操作日期选择.Text = "操作日期选择";
+            // 
+            // 逾期整理
+            // 
+            this.逾期整理.Location = new System.Drawing.Point(32, 301);
+            this.逾期整理.Name = "逾期整理";
+            this.逾期整理.Size = new System.Drawing.Size(77, 43);
+            this.逾期整理.TabIndex = 41;
+            this.逾期整理.Text = "逾期整理";
+            this.逾期整理.UseVisualStyleBackColor = true;
+            this.逾期整理.Click += new System.EventHandler(this.逾期整理_Click);
             // 
             // 坏账整理
             // 
@@ -334,6 +344,69 @@
             this.收益预览表.RowTemplate.Height = 23;
             this.收益预览表.Size = new System.Drawing.Size(427, 299);
             this.收益预览表.TabIndex = 33;
+            // 
+            // 时间段
+            // 
+            dataGridViewCellStyle162.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.时间段.DefaultCellStyle = dataGridViewCellStyle162;
+            this.时间段.Frozen = true;
+            this.时间段.HeaderText = "时间段";
+            this.时间段.MaxInputLength = 10;
+            this.时间段.Name = "时间段";
+            this.时间段.ReadOnly = true;
+            this.时间段.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.时间段.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // 预览笔数
+            // 
+            dataGridViewCellStyle163.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle163.Format = "N0";
+            dataGridViewCellStyle163.NullValue = null;
+            this.预览笔数.DefaultCellStyle = dataGridViewCellStyle163;
+            this.预览笔数.Frozen = true;
+            this.预览笔数.HeaderText = "笔数";
+            this.预览笔数.MaxInputLength = 10;
+            this.预览笔数.Name = "预览笔数";
+            this.预览笔数.ReadOnly = true;
+            this.预览笔数.Width = 55;
+            // 
+            // 预览本金
+            // 
+            dataGridViewCellStyle164.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle164.Format = "N2";
+            dataGridViewCellStyle164.NullValue = null;
+            this.预览本金.DefaultCellStyle = dataGridViewCellStyle164;
+            this.预览本金.Frozen = true;
+            this.预览本金.HeaderText = "本金";
+            this.预览本金.MaxInputLength = 10;
+            this.预览本金.Name = "预览本金";
+            this.预览本金.ReadOnly = true;
+            this.预览本金.Width = 75;
+            // 
+            // 预览收益
+            // 
+            dataGridViewCellStyle165.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle165.Format = "N2";
+            dataGridViewCellStyle165.NullValue = null;
+            this.预览收益.DefaultCellStyle = dataGridViewCellStyle165;
+            this.预览收益.Frozen = true;
+            this.预览收益.HeaderText = "收益";
+            this.预览收益.MaxInputLength = 10;
+            this.预览收益.Name = "预览收益";
+            this.预览收益.ReadOnly = true;
+            this.预览收益.Width = 55;
+            // 
+            // 预览合计
+            // 
+            dataGridViewCellStyle166.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle166.Format = "N2";
+            this.预览合计.DefaultCellStyle = dataGridViewCellStyle166;
+            this.预览合计.Frozen = true;
+            this.预览合计.HeaderText = "合计";
+            this.预览合计.MaxInputLength = 10;
+            this.预览合计.Name = "预览合计";
+            this.预览合计.ReadOnly = true;
+            this.预览合计.Width = 75;
             // 
             // 安全信息
             // 
@@ -795,8 +868,8 @@
             // Column33
             // 
             this.Column33.DataPropertyName = "BJ";
-            dataGridViewCellStyle70.Format = "N2";
-            this.Column33.DefaultCellStyle = dataGridViewCellStyle70;
+            dataGridViewCellStyle167.Format = "N2";
+            this.Column33.DefaultCellStyle = dataGridViewCellStyle167;
             this.Column33.HeaderText = "本金";
             this.Column33.Name = "Column33";
             this.Column33.Width = 80;
@@ -863,9 +936,9 @@
             // Column23
             // 
             this.Column23.DataPropertyName = "CZ";
-            dataGridViewCellStyle71.Format = "N2";
-            dataGridViewCellStyle71.NullValue = null;
-            this.Column23.DefaultCellStyle = dataGridViewCellStyle71;
+            dataGridViewCellStyle168.Format = "N2";
+            dataGridViewCellStyle168.NullValue = null;
+            this.Column23.DefaultCellStyle = dataGridViewCellStyle168;
             this.Column23.HeaderText = "已充值¥";
             this.Column23.Name = "Column23";
             this.Column23.ReadOnly = true;
@@ -874,8 +947,8 @@
             // Column24
             // 
             this.Column24.DataPropertyName = "TK";
-            dataGridViewCellStyle72.Format = "N2";
-            this.Column24.DefaultCellStyle = dataGridViewCellStyle72;
+            dataGridViewCellStyle169.Format = "N2";
+            this.Column24.DefaultCellStyle = dataGridViewCellStyle169;
             this.Column24.HeaderText = "已提款¥";
             this.Column24.Name = "Column24";
             this.Column24.ReadOnly = true;
@@ -884,9 +957,9 @@
             // Column25
             // 
             this.Column25.DataPropertyName = "ZG";
-            dataGridViewCellStyle73.Format = "N2";
-            dataGridViewCellStyle73.NullValue = null;
-            this.Column25.DefaultCellStyle = dataGridViewCellStyle73;
+            dataGridViewCellStyle170.Format = "N2";
+            dataGridViewCellStyle170.NullValue = null;
+            this.Column25.DefaultCellStyle = dataGridViewCellStyle170;
             this.Column25.HeaderText = "站岗¥";
             this.Column25.Name = "Column25";
             this.Column25.ReadOnly = true;
@@ -895,8 +968,8 @@
             // Column3
             // 
             this.Column3.DataPropertyName = "WLR";
-            dataGridViewCellStyle74.Format = "N2";
-            this.Column3.DefaultCellStyle = dataGridViewCellStyle74;
+            dataGridViewCellStyle171.Format = "N2";
+            this.Column3.DefaultCellStyle = dataGridViewCellStyle171;
             this.Column3.HeaderText = "伪利润";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
@@ -905,8 +978,8 @@
             // Column26
             // 
             this.Column26.DataPropertyName = "ZT";
-            dataGridViewCellStyle75.Format = "N2";
-            this.Column26.DefaultCellStyle = dataGridViewCellStyle75;
+            dataGridViewCellStyle172.Format = "N2";
+            this.Column26.DefaultCellStyle = dataGridViewCellStyle172;
             this.Column26.HeaderText = "在投¥";
             this.Column26.Name = "Column26";
             this.Column26.ReadOnly = true;
@@ -915,8 +988,8 @@
             // Column27
             // 
             this.Column27.DataPropertyName = "HZ";
-            dataGridViewCellStyle76.Format = "N2";
-            this.Column27.DefaultCellStyle = dataGridViewCellStyle76;
+            dataGridViewCellStyle173.Format = "N2";
+            this.Column27.DefaultCellStyle = dataGridViewCellStyle173;
             this.Column27.HeaderText = "坏账¥";
             this.Column27.Name = "Column27";
             this.Column27.ReadOnly = true;
@@ -925,8 +998,8 @@
             // Column29
             // 
             this.Column29.DataPropertyName = "HZLS";
-            dataGridViewCellStyle77.Format = "N2";
-            this.Column29.DefaultCellStyle = dataGridViewCellStyle77;
+            dataGridViewCellStyle174.Format = "N2";
+            this.Column29.DefaultCellStyle = dataGridViewCellStyle174;
             this.Column29.HeaderText = "充值";
             this.Column29.Name = "Column29";
             this.Column29.Width = 60;
@@ -934,8 +1007,8 @@
             // Column30
             // 
             this.Column30.DataPropertyName = "TKLS";
-            dataGridViewCellStyle78.Format = "N2";
-            this.Column30.DefaultCellStyle = dataGridViewCellStyle78;
+            dataGridViewCellStyle175.Format = "N2";
+            this.Column30.DefaultCellStyle = dataGridViewCellStyle175;
             this.Column30.HeaderText = "提款";
             this.Column30.Name = "Column30";
             this.Column30.Width = 60;
@@ -1011,9 +1084,9 @@
             // Column38
             // 
             this.Column38.DataPropertyName = "ZG";
-            dataGridViewCellStyle79.Format = "N2";
-            dataGridViewCellStyle79.NullValue = null;
-            this.Column38.DefaultCellStyle = dataGridViewCellStyle79;
+            dataGridViewCellStyle176.Format = "N2";
+            dataGridViewCellStyle176.NullValue = null;
+            this.Column38.DefaultCellStyle = dataGridViewCellStyle176;
             this.Column38.HeaderText = "站岗资金";
             this.Column38.Name = "Column38";
             this.Column38.ReadOnly = true;
@@ -1022,8 +1095,8 @@
             // Column39
             // 
             this.Column39.DataPropertyName = "ZT";
-            dataGridViewCellStyle80.Format = "N2";
-            this.Column39.DefaultCellStyle = dataGridViewCellStyle80;
+            dataGridViewCellStyle177.Format = "N2";
+            this.Column39.DefaultCellStyle = dataGridViewCellStyle177;
             this.Column39.HeaderText = "在投资金";
             this.Column39.Name = "Column39";
             this.Column39.ReadOnly = true;
@@ -1032,8 +1105,8 @@
             // Column40
             // 
             this.Column40.DataPropertyName = "HZ";
-            dataGridViewCellStyle81.Format = "N2";
-            this.Column40.DefaultCellStyle = dataGridViewCellStyle81;
+            dataGridViewCellStyle178.Format = "N2";
+            this.Column40.DefaultCellStyle = dataGridViewCellStyle178;
             this.Column40.HeaderText = "坏账";
             this.Column40.Name = "Column40";
             this.Column40.ReadOnly = true;
@@ -1042,9 +1115,9 @@
             // Column41
             // 
             this.Column41.DataPropertyName = "FWF";
-            dataGridViewCellStyle82.Format = "N0";
-            dataGridViewCellStyle82.NullValue = null;
-            this.Column41.DefaultCellStyle = dataGridViewCellStyle82;
+            dataGridViewCellStyle179.Format = "N0";
+            dataGridViewCellStyle179.NullValue = null;
+            this.Column41.DefaultCellStyle = dataGridViewCellStyle179;
             this.Column41.HeaderText = "费用";
             this.Column41.Name = "Column41";
             this.Column41.ReadOnly = true;
@@ -1053,9 +1126,9 @@
             // Column42
             // 
             this.Column42.DataPropertyName = "PTQT";
-            dataGridViewCellStyle83.Format = "N0";
-            dataGridViewCellStyle83.NullValue = null;
-            this.Column42.DefaultCellStyle = dataGridViewCellStyle83;
+            dataGridViewCellStyle180.Format = "N0";
+            dataGridViewCellStyle180.NullValue = null;
+            this.Column42.DefaultCellStyle = dataGridViewCellStyle180;
             this.Column42.HeaderText = "起投";
             this.Column42.Name = "Column42";
             this.Column42.ReadOnly = true;
@@ -1186,9 +1259,9 @@
             // Column53
             // 
             this.Column53.DataPropertyName = "BJ";
-            dataGridViewCellStyle84.Format = "N2";
-            dataGridViewCellStyle84.NullValue = null;
-            this.Column53.DefaultCellStyle = dataGridViewCellStyle84;
+            dataGridViewCellStyle181.Format = "N2";
+            dataGridViewCellStyle181.NullValue = null;
+            this.Column53.DefaultCellStyle = dataGridViewCellStyle181;
             this.Column53.HeaderText = "本金";
             this.Column53.Name = "Column53";
             this.Column53.Width = 55;
@@ -1196,9 +1269,9 @@
             // Column54
             // 
             this.Column54.DataPropertyName = "SY";
-            dataGridViewCellStyle85.Format = "N2";
-            dataGridViewCellStyle85.NullValue = null;
-            this.Column54.DefaultCellStyle = dataGridViewCellStyle85;
+            dataGridViewCellStyle182.Format = "N2";
+            dataGridViewCellStyle182.NullValue = null;
+            this.Column54.DefaultCellStyle = dataGridViewCellStyle182;
             this.Column54.HeaderText = "收益";
             this.Column54.Name = "Column54";
             this.Column54.Width = 55;
@@ -1397,9 +1470,9 @@
             // Column34
             // 
             this.Column34.DataPropertyName = "HB";
-            dataGridViewCellStyle86.Format = "N2";
-            dataGridViewCellStyle86.NullValue = null;
-            this.Column34.DefaultCellStyle = dataGridViewCellStyle86;
+            dataGridViewCellStyle183.Format = "N2";
+            dataGridViewCellStyle183.NullValue = null;
+            this.Column34.DefaultCellStyle = dataGridViewCellStyle183;
             this.Column34.HeaderText = "还本";
             this.Column34.Name = "Column34";
             this.Column34.ReadOnly = true;
@@ -1408,9 +1481,9 @@
             // Column36
             // 
             this.Column36.DataPropertyName = "SY";
-            dataGridViewCellStyle87.Format = "N2";
-            dataGridViewCellStyle87.NullValue = null;
-            this.Column36.DefaultCellStyle = dataGridViewCellStyle87;
+            dataGridViewCellStyle184.Format = "N2";
+            dataGridViewCellStyle184.NullValue = null;
+            this.Column36.DefaultCellStyle = dataGridViewCellStyle184;
             this.Column36.HeaderText = "收益";
             this.Column36.Name = "Column36";
             this.Column36.ReadOnly = true;
@@ -1451,96 +1524,120 @@
             // 
             // chart2
             // 
-            chartArea10.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea10);
-            legend10.Name = "Legend1";
-            legend10.Title = "收益与坏账";
-            this.chart2.Legends.Add(legend10);
+            chartArea23.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea23);
+            legend23.Name = "Legend1";
+            legend23.Title = "收益与坏账";
+            this.chart2.Legends.Add(legend23);
             this.chart2.Location = new System.Drawing.Point(441, 6);
             this.chart2.Name = "chart2";
-            series31.ChartArea = "ChartArea1";
-            series31.Legend = "Legend1";
-            series31.Name = "伪利润";
-            series32.ChartArea = "ChartArea1";
-            series32.Legend = "Legend1";
-            series32.Name = "在投资金";
-            series33.ChartArea = "ChartArea1";
-            series33.Legend = "Legend1";
-            series33.Name = "坏账";
-            series34.ChartArea = "ChartArea1";
-            series34.Legend = "Legend1";
-            series34.Name = "站岗资金";
-            this.chart2.Series.Add(series31);
-            this.chart2.Series.Add(series32);
-            this.chart2.Series.Add(series33);
-            this.chart2.Series.Add(series34);
+            series76.ChartArea = "ChartArea1";
+            series76.Legend = "Legend1";
+            series76.Name = "伪利润";
+            series77.ChartArea = "ChartArea1";
+            series77.Legend = "Legend1";
+            series77.Name = "在投资金";
+            series78.ChartArea = "ChartArea1";
+            series78.Legend = "Legend1";
+            series78.Name = "坏账";
+            series79.ChartArea = "ChartArea1";
+            series79.Legend = "Legend1";
+            series79.Name = "站岗资金";
+            this.chart2.Series.Add(series76);
+            this.chart2.Series.Add(series77);
+            this.chart2.Series.Add(series78);
+            this.chart2.Series.Add(series79);
             this.chart2.Size = new System.Drawing.Size(895, 499);
             this.chart2.TabIndex = 1;
             this.chart2.Text = "chart2";
             // 
             // chart1
             // 
-            chartArea11.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea11);
-            legend11.Enabled = false;
-            legend11.Name = "Legend1";
-            this.chart1.Legends.Add(legend11);
+            chartArea24.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea24);
+            legend24.Enabled = false;
+            legend24.Name = "Legend1";
+            this.chart1.Legends.Add(legend24);
             this.chart1.Location = new System.Drawing.Point(6, 50);
             this.chart1.Name = "chart1";
-            series35.ChartArea = "ChartArea1";
-            series35.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series35.IsValueShownAsLabel = true;
-            series35.Label = "#VALX #PERCENT{P}\\n";
-            series35.Legend = "Legend1";
-            series35.Name = "Series1";
-            this.chart1.Series.Add(series35);
+            series80.ChartArea = "ChartArea1";
+            series80.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series80.IsValueShownAsLabel = true;
+            series80.Label = "#VALX #PERCENT{P}\\n";
+            series80.Legend = "Legend1";
+            series80.Name = "Series1";
+            this.chart1.Series.Add(series80);
             this.chart1.Size = new System.Drawing.Size(440, 403);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
             // 
-            // tabPage2
+            // 回款分析
             // 
-            this.tabPage2.Controls.Add(this.radioButton3);
-            this.tabPage2.Controls.Add(this.radioButton4);
-            this.tabPage2.Controls.Add(this.chart3);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1332, 511);
-            this.tabPage2.TabIndex = 7;
-            this.tabPage2.Text = "回款分析";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.回款分析.Controls.Add(this.收款金额);
+            this.回款分析.Controls.Add(this.收款次数);
+            this.回款分析.Controls.Add(this.chart3);
+            this.回款分析.Location = new System.Drawing.Point(4, 22);
+            this.回款分析.Name = "回款分析";
+            this.回款分析.Padding = new System.Windows.Forms.Padding(3);
+            this.回款分析.Size = new System.Drawing.Size(1332, 511);
+            this.回款分析.TabIndex = 7;
+            this.回款分析.Text = "回款分析";
+            this.回款分析.UseVisualStyleBackColor = true;
+            // 
+            // 收款金额
+            // 
+            this.收款金额.AutoSize = true;
+            this.收款金额.Location = new System.Drawing.Point(1196, 275);
+            this.收款金额.Name = "收款金额";
+            this.收款金额.Size = new System.Drawing.Size(71, 16);
+            this.收款金额.TabIndex = 68;
+            this.收款金额.Text = "收款金额";
+            this.收款金额.UseVisualStyleBackColor = true;
+            this.收款金额.CheckedChanged += new System.EventHandler(this.收款金额_CheckedChanged);
+            // 
+            // 收款次数
+            // 
+            this.收款次数.AutoSize = true;
+            this.收款次数.Checked = true;
+            this.收款次数.Location = new System.Drawing.Point(1197, 241);
+            this.收款次数.Name = "收款次数";
+            this.收款次数.Size = new System.Drawing.Size(71, 16);
+            this.收款次数.TabIndex = 67;
+            this.收款次数.TabStop = true;
+            this.收款次数.Text = "收款次数";
+            this.收款次数.UseVisualStyleBackColor = true;
+            this.收款次数.CheckedChanged += new System.EventHandler(this.收款次数_CheckedChanged);
             // 
             // chart3
             // 
-            chartArea12.Name = "ChartArea1";
-            this.chart3.ChartAreas.Add(chartArea12);
-            legend12.Name = "Legend1";
-            legend12.Title = "回款分析";
-            this.chart3.Legends.Add(legend12);
+            chartArea22.Name = "ChartArea1";
+            this.chart3.ChartAreas.Add(chartArea22);
+            legend22.Name = "Legend1";
+            legend22.Title = "回款分析";
+            this.chart3.Legends.Add(legend22);
             this.chart3.Location = new System.Drawing.Point(6, 6);
             this.chart3.Name = "chart3";
             this.chart3.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SemiTransparent;
-            series36.ChartArea = "ChartArea1";
-            series36.Legend = "Legend1";
-            series36.Name = "坏账";
-            series37.ChartArea = "ChartArea1";
-            series37.Legend = "Legend1";
-            series37.Name = "正常回款";
-            series38.ChartArea = "ChartArea1";
-            series38.Legend = "Legend1";
-            series38.Name = "提前回款";
-            series39.ChartArea = "ChartArea1";
-            series39.Legend = "Legend1";
-            series39.Name = "逾期未回";
-            series40.ChartArea = "ChartArea1";
-            series40.Legend = "Legend1";
-            series40.Name = "逾期回款";
-            this.chart3.Series.Add(series36);
-            this.chart3.Series.Add(series37);
-            this.chart3.Series.Add(series38);
-            this.chart3.Series.Add(series39);
-            this.chart3.Series.Add(series40);
+            series71.ChartArea = "ChartArea1";
+            series71.Legend = "Legend1";
+            series71.Name = "坏账";
+            series72.ChartArea = "ChartArea1";
+            series72.Legend = "Legend1";
+            series72.Name = "正常回款";
+            series73.ChartArea = "ChartArea1";
+            series73.Legend = "Legend1";
+            series73.Name = "提前回款";
+            series74.ChartArea = "ChartArea1";
+            series74.Legend = "Legend1";
+            series74.Name = "逾期未回";
+            series75.ChartArea = "ChartArea1";
+            series75.Legend = "Legend1";
+            series75.Name = "逾期回款";
+            this.chart3.Series.Add(series71);
+            this.chart3.Series.Add(series72);
+            this.chart3.Series.Add(series73);
+            this.chart3.Series.Add(series74);
+            this.chart3.Series.Add(series75);
             this.chart3.Size = new System.Drawing.Size(1299, 484);
             this.chart3.TabIndex = 0;
             this.chart3.Text = "chart3";
@@ -1564,101 +1661,6 @@
             this.回款统计1.Name = "回款统计1";
             this.回款统计1.Size = new System.Drawing.Size(104, 24);
             this.回款统计1.TabIndex = 0;
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(1196, 275);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(71, 16);
-            this.radioButton3.TabIndex = 68;
-            this.radioButton3.Text = "收款金额";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // radioButton4
-            // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Checked = true;
-            this.radioButton4.Location = new System.Drawing.Point(1197, 241);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(71, 16);
-            this.radioButton4.TabIndex = 67;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "收款次数";
-            this.radioButton4.UseVisualStyleBackColor = true;
-            // 
-            // 逾期整理
-            // 
-            this.逾期整理.Location = new System.Drawing.Point(32, 301);
-            this.逾期整理.Name = "逾期整理";
-            this.逾期整理.Size = new System.Drawing.Size(77, 43);
-            this.逾期整理.TabIndex = 41;
-            this.逾期整理.Text = "逾期整理";
-            this.逾期整理.UseVisualStyleBackColor = true;
-            this.逾期整理.Click += new System.EventHandler(this.逾期整理_Click);
-            // 
-            // 时间段
-            // 
-            dataGridViewCellStyle88.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.时间段.DefaultCellStyle = dataGridViewCellStyle88;
-            this.时间段.Frozen = true;
-            this.时间段.HeaderText = "时间段";
-            this.时间段.MaxInputLength = 10;
-            this.时间段.Name = "时间段";
-            this.时间段.ReadOnly = true;
-            this.时间段.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.时间段.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // 预览笔数
-            // 
-            dataGridViewCellStyle89.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle89.Format = "N0";
-            dataGridViewCellStyle89.NullValue = null;
-            this.预览笔数.DefaultCellStyle = dataGridViewCellStyle89;
-            this.预览笔数.Frozen = true;
-            this.预览笔数.HeaderText = "笔数";
-            this.预览笔数.MaxInputLength = 10;
-            this.预览笔数.Name = "预览笔数";
-            this.预览笔数.ReadOnly = true;
-            this.预览笔数.Width = 55;
-            // 
-            // 预览本金
-            // 
-            dataGridViewCellStyle90.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle90.Format = "N2";
-            dataGridViewCellStyle90.NullValue = null;
-            this.预览本金.DefaultCellStyle = dataGridViewCellStyle90;
-            this.预览本金.Frozen = true;
-            this.预览本金.HeaderText = "本金";
-            this.预览本金.MaxInputLength = 10;
-            this.预览本金.Name = "预览本金";
-            this.预览本金.ReadOnly = true;
-            this.预览本金.Width = 75;
-            // 
-            // 预览收益
-            // 
-            dataGridViewCellStyle91.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle91.Format = "N2";
-            dataGridViewCellStyle91.NullValue = null;
-            this.预览收益.DefaultCellStyle = dataGridViewCellStyle91;
-            this.预览收益.Frozen = true;
-            this.预览收益.HeaderText = "收益";
-            this.预览收益.MaxInputLength = 10;
-            this.预览收益.Name = "预览收益";
-            this.预览收益.ReadOnly = true;
-            this.预览收益.Width = 55;
-            // 
-            // 预览合计
-            // 
-            dataGridViewCellStyle92.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle92.Format = "N2";
-            this.预览合计.DefaultCellStyle = dataGridViewCellStyle92;
-            this.预览合计.Frozen = true;
-            this.预览合计.HeaderText = "合计";
-            this.预览合计.MaxInputLength = 10;
-            this.预览合计.Name = "预览合计";
-            this.预览合计.ReadOnly = true;
-            this.预览合计.Width = 75;
             // 
             // Form1
             // 
@@ -1695,8 +1697,8 @@
             this.平台比重.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
+            this.回款分析.ResumeLayout(false);
+            this.回款分析.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart3)).EndInit();
             this.ResumeLayout(false);
 
@@ -1817,15 +1819,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column54;
         private System.Windows.Forms.DataGridViewComboBoxColumn QDZT;
         private System.Windows.Forms.TabPage 平台比重;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage 回款分析;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
         private System.Windows.Forms.RadioButton 回款统计2;
         private System.Windows.Forms.RadioButton 回款统计1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart3;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton4;
+        private System.Windows.Forms.RadioButton 收款金额;
+        private System.Windows.Forms.RadioButton 收款次数;
         private System.Windows.Forms.Button 逾期整理;
         private System.Windows.Forms.DataGridViewTextBoxColumn 时间段;
         private System.Windows.Forms.DataGridViewTextBoxColumn 预览笔数;

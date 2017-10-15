@@ -46,36 +46,47 @@ namespace P2P_1._00._04
         private void 坏账整理_Click(object sender, EventArgs e)
         {
             SqlHelper sh = new SqlHelper();
-            DateTime T = Convert.ToDateTime(预览日期.Text), T1 = sh.rq(T, "日标", -1);
+            DateTime T = Convert.ToDateTime(预览日期.Text), T1 = sh.rq(T, "月标", -3);
 
-            String sql = string.Format("SELECT ZCXX.ID, Sum(HSQD.BJ) AS BJ, ZCXX.HZ FROM HSQD INNER JOIN(TZLB INNER JOIN ZCXX ON TZLB.ID = ZCXX.ID) ON HSQD.DH = TZLB.DH WHERE((HSQD.ZTID) = 4 AND HSQD.GHR < #{0}# ) GROUP BY ZCXX.ID, ZCXX.HZ", T1);
-             DataTable dt = sh.ExeQuery(sql);
-            IList<HKXX> LHKXX = TableProcessing<HKXX>.DataTableToList(dt);
-            List<HKXX> LHKXX_Bat = LHKXX.Where(m => m.GHR < T1  ).ToList();
+            String sql = string.Format("SELECT ZCXX.ID, ZCXX.ZT, ZCXX.WLR, ZCXX.HZ, Sum(HSQD.BJ) AS BJ FROM (ZCXX LEFT JOIN TZLB ON ZCXX.ID = TZLB.ID) LEFT JOIN HSQD ON TZLB.DH = HSQD.DH WHERE (HSQD.ZTID)=4 AND (HSQD.GHR) < #{0}#   GROUP BY ZCXX.ID, ZCXX.ZT, ZCXX.WLR, ZCXX.HZ", T1);
+            DataTable dt = sh.ExeQuery(sql);
+            IList<HZCL> HZCL = TableProcessing<HZCL>.DataTableToList(dt);
 
-
-
-            sql = string.Format("UPDATE [HSQD] SET ZTID=5 where ZTID=4 AND  GHR < #{0}# ", T1); //  //改为坏账
-           
+            if (HZCL.Count > 0)
+            {
+                int X = 1;
+                String[] sqL = new String[HZCL.Count + 1];
+                foreach (var item in HZCL)
+                {
+                    item.ZT -= item.BJ;
+                    item.WLR -= item.BJ;
+                    item.HZ += item.BJ;
+                    sqL[X] = string.Format("UPDATE [ZCXX] SET ZT={0},WLR={1},HZ={2}  where ID={3}", item.ZT, item.WLR, item.HZ, item.ID);
+                    X++;
+                }
+                sqL[0] = string.Format("UPDATE [HSQD] SET ZTID=6  where GHR<#{0}# AND ZTID=4", T1);
+                if (sh.DiaoYongShiWu(sqL)) MessageBox.Show("如你所愿");
+                else MessageBox.Show("输入失败"); //    事物调用
+            }
             ys = 3;
             定时1.Enabled = true;
         }
         void GBL()
         {
-            收益预览表.AllowUserToAddRows = false;
-            收益预览表.AutoGenerateColumns = false;
 
+            收益预览表.AutoGenerateColumns = false;
             账户列表.AutoGenerateColumns = false;  //关闭自动产生列
             平台列表.AutoGenerateColumns = false;
             注册列表.AutoGenerateColumns = false;
             账户概况.AutoGenerateColumns = false;
-            账户概况.AllowUserToAddRows = false;
-
-            投资概况.AutoGenerateColumns = false;
-            投资概况.AllowUserToAddRows = false;
             管理投资.AutoGenerateColumns = false;
             投资列表.AutoGenerateColumns = false;
+            账户流水.AutoGenerateColumns = false;
+            投资概况.AutoGenerateColumns = false;
 
+            账户概况.AllowUserToAddRows = false;
+            投资概况.AllowUserToAddRows = false;
+            收益预览表.AllowUserToAddRows = false;
             ////列表名称.AutoGenerateColumns = false;  //关闭自动产生列
             ////  列表名称.AllowUserToAddRows = false;  //关闭自动产生行
         } //关闭自动产生列
@@ -113,6 +124,19 @@ namespace P2P_1._00._04
                     GHRCount += item.GHRCount;
                 }
                 收益预览表.Rows.Add("一周内  应收", GHRCount, BJ, SY, BJ + SY);
+            }
+            T1 = sh.rq(T, "月标", 1);
+            LHKXX_Bat = LHKXX.Where(m => m.GHR <= T1 && m.GHR >= T && m.ZTID == 1).ToList();
+            if (LHKXX_Bat.Count > 0)
+            {
+                GHRCount = 0; SY = 0; BJ = 0;
+                foreach (var item in LHKXX_Bat)
+                {
+                    BJ += item.BJ;
+                    SY += item.SY;
+                    GHRCount += item.GHRCount;
+                }
+                收益预览表.Rows.Add("未来1月应收", GHRCount, BJ, SY, BJ + SY);
             }
             T1 = sh.rq(T, "月标", 3);
             LHKXX_Bat = LHKXX.Where(m => m.GHR <= T1 && m.GHR >= T && m.ZTID == 1).ToList();
@@ -170,7 +194,19 @@ namespace P2P_1._00._04
                 }
                 收益预览表.Rows.Add("一周内  已收", GHRCount, BJ, SY, BJ + SY);
             }
-
+            T1 = sh.rq(T, "月标", -1);
+            LHKXX_Bat = LHKXX.Where(m => m.GHR >= T1 && m.GHR <= T && m.ZTID < 4 && m.ZTID > 1).ToList();
+            if (LHKXX_Bat.Count > 0)
+            {
+                GHRCount = 0; SY = 0; BJ = 0;
+                foreach (var item in LHKXX_Bat)
+                {
+                    BJ += item.BJ;
+                    SY += item.SY;
+                    GHRCount += item.GHRCount;
+                }
+                收益预览表.Rows.Add("过去1月已收", GHRCount, BJ, SY, BJ + SY);
+            }
             T1 = sh.rq(T, "月标", -3);
             LHKXX_Bat = LHKXX.Where(m => m.GHR >= T1 && m.GHR <= T && m.ZTID < 4 && m.ZTID > 1).ToList();
             if (LHKXX_Bat.Count > 0)
@@ -212,12 +248,12 @@ namespace P2P_1._00._04
                 收益预览表.Rows.Add("逾   期   中", GHRCount, BJ, SY, BJ + SY);
             }
 
-            sql = "SELECT HSQD.GHR, Sum(HSQD.BJ) AS BJ, Sum(HSQD.SY) AS SY, Count(HSQD.GHR) AS GHRCount, HSQD.ZTID FROM HSQD  where ZTID=5  GROUP BY HSQD.GHR, HSQD.ZTID ;";
+            sql = "SELECT HSQD.GHR, Sum(HSQD.BJ) AS BJ, Sum(HSQD.SY) AS SY, Count(HSQD.GHR) AS GHRCount, HSQD.ZTID FROM HSQD  where ZTID=6  GROUP BY HSQD.GHR, HSQD.ZTID ;";
 
             //sql = "SELECT sum(BJ) AS A, SUM(SY) AS B ,count(*) as  cnt FROM  HSQD  ";
             dt = sh.ExeQuery(sql);
             LHKXX = TableProcessing<HKXX>.DataTableToList(dt);
-            LHKXX_Bat = LHKXX.Where(m => m.ZTID == 5).ToList();
+            LHKXX_Bat = LHKXX.Where(m => m.ZTID == 6).ToList();
             if (LHKXX_Bat.Count > 0)
             {
                 if (LHKXX_Bat.Count > 0)
@@ -226,10 +262,10 @@ namespace P2P_1._00._04
                     foreach (var item in LHKXX_Bat)
                     {
                         BJ += item.BJ;
-                        SY += item.SY;
+                        //SY += item.SY;
                         GHRCount += item.GHRCount;
                     }
-                    收益预览表.Rows.Add("坏   账   中", GHRCount, BJ, SY, BJ);
+                    收益预览表.Rows.Add("坏   账   中", GHRCount, BJ, 0, BJ);
                 }
             }
         }
@@ -500,9 +536,93 @@ namespace P2P_1._00._04
                     SHUAXING(sql, 管理投资);
                     #endregion
                     break;
+                case "平台比重":
+                    #region  折叠代码  
+                    //      Sum(DSBJ) as abc    新字段定义   =   sum（原字段）AS 新字段
+                    sql = "SELECT PTXX.PTMC, ZCXX.ZG, ZCXX.ZT, ZCXX.WLR, ZCXX.HZ FROM ZCXX INNER JOIN PTXX ON ZCXX.PTID = PTXX.PTID";
 
+                    sql = "SELECT PTMC, Sum(ZG) as A,Sum(ZT) as B, Sum(WLR) as C, Sum(HZ) as D  FROM (" + sql + ")where ZG > 0  OR ZT > 0  GROUP BY PTMC ";
+                    sh = new SqlHelper();
+                    dt = sh.ExeQuery(sql);
+                    if (dt.Rows.Count > 0)
+                    {
+                        //chart2
+                        double[] yValues = new double[dt.Rows.Count], y1Values = new double[dt.Rows.Count], y2Values = new double[dt.Rows.Count],
+                            y3Values = new double[dt.Rows.Count], y4Values = new double[dt.Rows.Count];
+                        string[] xValues = new string[dt.Rows.Count];
+                        int i = 0;
+                        foreach (DataRow dr in dt.Rows)
+                        {
+                            yValues[i] = double.Parse(dr["A"].ToString()) + double.Parse(dr["B"].ToString());   // yValues[i] = double.Parse(dr["abc"].ToString());    //原句
+                            y1Values[i] = double.Parse(dr["C"].ToString());
+                            y2Values[i] = double.Parse(dr["D"].ToString());
+                            y3Values[i] = double.Parse(dr["B"].ToString()) / 100;
+                            y4Values[i] = double.Parse(dr["A"].ToString()) / 100;
+                            xValues[i] = dr["PTMC"].ToString();
+                            i++;
+                        }
+                        chart1.Series["Series1"].Points.DataBindXY(xValues, yValues);
+                        chart2.Series["伪利润"].Points.DataBindXY(xValues, y1Values);
+                        chart2.Series["坏账"].Points.DataBindXY(xValues, y2Values);
+                        chart2.Series["在投资金"].Points.DataBindXY(xValues, y3Values);
+                        chart2.Series["站岗资金"].Points.DataBindXY(xValues, y4Values);
+                        //chart2.Series["Series1"].LegendText = "#VALX";
+                        //chart2.Series["Series1"].Label = "#PERCENT{P}";
+                    }
+                    #endregion
+                    break;
+                case "回款分析":
+                    分析();
+                    break;
             }
             KG = true;
+        }
+        private void 收款金额_CheckedChanged(object sender, EventArgs e)
+        {
+            分析();
+        }
+
+        private void 收款次数_CheckedChanged(object sender, EventArgs e)
+        {
+            分析();
+        }
+        void 分析()
+        {
+            SqlHelper sh = new SqlHelper();
+            String sql = "";
+            if (收款次数.Checked) sql = "SELECT * FROM C_JE ";
+            if (收款金额.Checked) sql = "SELECT * FROM C_CS ";
+            DataTable dt = sh.ExeQuery(sql);
+            IList<HKFX> HKFX = TableProcessing<HKFX>.DataTableToList(dt);
+            //List<HKXX> LHKXX_Bat = LHKXX.Where(m => m.GHR == T && m.ZTID == 1).ToList();
+            if (HKFX.Count > 0)
+            {
+                Decimal A = 0;
+                int i = 0;
+                string[] xValues = new string[HKFX.Count];
+                Decimal[] yValues = new Decimal[HKFX.Count], y1Values = new Decimal[HKFX.Count], y2Values = new Decimal[HKFX.Count], y3Values = new Decimal[HKFX.Count], y4Values = new Decimal[HKFX.Count];
+
+                foreach (var item in HKFX)
+                {
+                    A = item.提前回款 + item.正常回款 + item.逾期未收 + item.逾期已收 + item.坏账;
+                    if (A>0)
+                    {
+                        yValues[i] = decimal.Round(item.提前回款 / A*100 , 0);
+                        y1Values[i] = decimal.Round(item.正常回款 / A * 100, 0);
+                        y2Values[i] = decimal.Round(item.逾期未收 / A * 100, 0);
+                        y3Values[i] = decimal.Round(item.逾期已收 / A * 100, 0);
+                        y4Values[i] = decimal.Round(item.坏账 / A * 100, 0);
+                        xValues[i] = item.平台名称;
+                        i++;
+                    }
+                }
+
+                chart3.Series["提前回款"].Points.DataBindXY((xValues, yValues);
+                chart3.Series["正常回款"].Points.DataBindXY((xValues, y1Values);
+                chart3.Series["逾期未收"].Points.DataBindXY((xValues, y2Values);
+                chart3.Series["逾期已收"].Points.DataBindXY((xValues, y3Values);
+                chart3.Series["坏账"].Points.DataBindXY((xValues, y4Values);
+            }
         }
         void XULIE(String A, ComboBox C, String D, String D1)
         {
@@ -830,7 +950,7 @@ namespace P2P_1._00._04
                             dt.Rows[0][6] = 1;
                             dt.Rows[0][8] = Convert.ToDouble(dt.Rows[0][8].ToString()) + Convert.ToDouble(投资列表.CurrentRow.Cells[3].Value.ToString());
                             //在投资金
-                            
+
                             dt.Rows[0][10] = Convert.ToDouble(dt.Rows[0][10].ToString()) - Convert.ToDouble(投资列表.CurrentRow.Cells[3].Value.ToString());
                             // 坏账
 
@@ -1291,5 +1411,7 @@ namespace P2P_1._00._04
             String sql = string.Format("UPDATE [XJLS] SET SM='{0}' where DH='{1}'    ", 账户流水.CurrentRow.Cells[4].Value, 账户流水.CurrentRow.Cells[1].Value.ToString()); //  //改为坏账
             DataTable dt = sh.ExeQuery(sql);
         }
+
+
     }
 }
