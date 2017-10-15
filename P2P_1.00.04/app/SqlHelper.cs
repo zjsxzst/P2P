@@ -147,13 +147,13 @@ public class SqlHelper
         DateTime A1 = A.AddDays(C);
         switch (B)
         {
-            case "天": //"天标"
+            case "天标": //"天标"
                 A1 = A.AddDays(C);//曾减  X 天
                 break;
-            case "月": //"月标"
+            case "月标": //"月标"
                 A1 = A.AddMonths(C);//曾减 X 月;    // 算成月息
                 break;
-            case "年": //"年标"
+            case "年标": //"年标"
                 A1 = A.AddYears(C);
                 break;
                 //    //default:

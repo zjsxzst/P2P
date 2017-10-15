@@ -28,6 +28,13 @@ namespace P2P.DoMain
         /// 次数
         /// </summary>
         public int GHRCount { get; set; }
-
+        /// <summary>
+        /// 用户ID
+        /// </summary>
+        public int ID { get; set; }
+        /// <summary>
+        /// 坏账
+        /// </summary>
+        public Decimal HZ { get; set; }
     }
 }
