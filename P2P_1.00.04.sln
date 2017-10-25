@@ -27,6 +27,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tool", "Tool", "{26553568-9
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QiuBai", "Tool\Spider\QiuBai.csproj", "{2C603B44-6D2F-4293-B204-10AB8B44128E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P2P.DataBaseMessage", "P2P.DataBaseMessage\P2P.DataBaseMessage.csproj", "{8676734D-E105-4187-BF6B-3F307BB820DE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F988D44B-C27C-4BE6-9FD2-AB359D0EE6B9} = {F988D44B-C27C-4BE6-9FD2-AB359D0EE6B9}
+		{977A5154-83F0-414A-8A34-245CD9FD645B} = {977A5154-83F0-414A-8A34-245CD9FD645B}
+		{9B6608B7-5943-4213-8B8C-5B04D508F565} = {9B6608B7-5943-4213-8B8C-5B04D508F565}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +82,14 @@ Global
 		{2C603B44-6D2F-4293-B204-10AB8B44128E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2C603B44-6D2F-4293-B204-10AB8B44128E}.Release|x86.ActiveCfg = Release|Any CPU
 		{2C603B44-6D2F-4293-B204-10AB8B44128E}.Release|x86.Build.0 = Release|Any CPU
+		{8676734D-E105-4187-BF6B-3F307BB820DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8676734D-E105-4187-BF6B-3F307BB820DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8676734D-E105-4187-BF6B-3F307BB820DE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8676734D-E105-4187-BF6B-3F307BB820DE}.Debug|x86.Build.0 = Debug|Any CPU
+		{8676734D-E105-4187-BF6B-3F307BB820DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8676734D-E105-4187-BF6B-3F307BB820DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8676734D-E105-4187-BF6B-3F307BB820DE}.Release|x86.ActiveCfg = Release|Any CPU
+		{8676734D-E105-4187-BF6B-3F307BB820DE}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FilesClasses.cs" />
     <Compile Include="SqlProcessing.cs" />
     <Compile Include="TableProcessing.cs" />
     <Compile Include="TextProcessing.cs" />
