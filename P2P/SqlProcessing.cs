@@ -13,11 +13,34 @@ namespace P2P
         public static string Flie_Path = System.IO.Directory.GetCurrentDirectory() + "\\Data\\DATA.accdb";//当前路径
         public static string PassWD = null;//获取数据库密码
         private static DataTable dt;
-        private static string connStr = String.Format("Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0}; Jet OLEDB:Database Password ={1}", Flie_Path, PassWD);//;
+        private static string connStr;//= String.Format("Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0}; Jet OLEDB:Database Password ={1}", Flie_Path, PassWD);//;
         private static OleDbConnection con = new OleDbConnection(connStr);   // TODO: 在此处添加构造函数逻辑
-       
+        private static void Init()
+        {
+            string sql = "";
+            if (!string.IsNullOrWhiteSpace(PassWD) || !string.IsNullOrWhiteSpace(connStr))
+            {
+                string[][] data = FilesClasses.GetXMLData("", "root", "name,value");
+                for(int i=0;i<data.Length;i++)
+                {
+
+                    switch(data[i][0])
+                    {
+                        case "connStr":
+                            sql = TextProcessing.SuperDesDecrypt(data[i][1], "zjsxzsta", "zjsxzstb");break;
+                        case "honeybee":PassWD = data[i][1];break;
+
+                    }
+                    connStr = String.Format(sql, Flie_Path, PassWD);
+                    con = new OleDbConnection(connStr);
+                }
+            }
+            
+
+        }
         public static IList<T> ExeQuerys(string sql)
         {
+            Init();
             OleDbDataAdapter oda = new OleDbDataAdapter(sql, con);
             dt = new DataTable();
             oda.Fill(dt);

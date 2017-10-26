@@ -6,7 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Almighty
+namespace P2P
 {
     public class TextProcessing
     {
@@ -15,7 +15,7 @@ namespace Almighty
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public string TransformationMD5(string data)
+        public static string TransformationMD5(string data)
         {
             MD5CryptoServiceProvider MD5Data = new MD5CryptoServiceProvider();
             return BitConverter.ToString(MD5Data.ComputeHash(Encoding.Default.GetBytes(data))).Replace("-", "");
@@ -27,7 +27,7 @@ namespace Almighty
         /// <param name="sKey">密匙</param>
         /// <param name="sIV">偏移量</param>
         /// <returns>密匙、偏移量只能为8位</returns>
-        public string Encrypt(string pToEncrypt, string sKey, string sIV)
+        public static string Encrypt(string pToEncrypt, string sKey, string sIV)
         {
             DESCryptoServiceProvider des = new DESCryptoServiceProvider(); //把字符串放到byte数组中
 
@@ -60,7 +60,7 @@ namespace Almighty
         /// <param name="sKey">密匙</param>
         /// <param name="sIV">偏移量</param>
         /// <returns>密匙、偏移量只能为8位</returns>
-        public string SuperEncrypt(string pToEncrypt, string sKey, string sIV)
+        public static string SuperEncrypt(string pToEncrypt, string sKey, string sIV)
         {
             char[] pToEncrypt_Bat = pToEncrypt.ToCharArray();//转成Char
             for (int i = 0; i < pToEncrypt_Bat.Length; i++)//位移i位
@@ -86,7 +86,7 @@ namespace Almighty
         /// <param name="sIV">偏移量</param>
         /// <param name="Data">加密后数据</param>
         /// <returns>密匙、偏移量只能为8位</returns>
-        public bool EncryptionResults(string pToEncrypt, string sKey, string sIV, ref string Data)
+        public static bool EncryptionResults(string pToEncrypt, string sKey, string sIV, ref string Data)
         {
             Data = Encrypt(pToEncrypt, sKey, sIV);
             if (Data == "密匙只能为8位长度" || Data == "偏移量只能为8位长度")
@@ -100,7 +100,7 @@ namespace Almighty
         /// <param name="sKey">密匙</param>
         /// <param name="sIV">偏移量</param>
         /// <returns>密匙、偏移量只能为8位</returns>
-        public string DesDecrypt(string pToDecrypt, string sKey, string sIV)
+        public static string DesDecrypt(string pToDecrypt, string sKey, string sIV)
         {
             MemoryStream ms = new MemoryStream();
 
@@ -140,7 +140,7 @@ namespace Almighty
         /// <param name="sKey">密匙</param>
         /// <param name="sIV">偏移量</param>
         /// <returns>密匙、偏移量只能为8位</returns>
-        public string SuperDesDecrypt(string pToEncrypt, string sKey, string sIV)
+        public static string SuperDesDecrypt(string pToEncrypt, string sKey, string sIV)
         {
             string Data = DesDecrypt(pToEncrypt, sKey, sIV);
             char[] pToEncrypt_Bat = Data.ToCharArray();//转成Char
