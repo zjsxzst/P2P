@@ -25,7 +25,7 @@ namespace P2P.DataBaseMessage
         private void button1_Click(object sender, EventArgs e)
         {
             init();
-            IList<Table1> IT1 = SqlProcessing<Table1>.ExeQuerys("select * from Table1");
+            //IList<Table1> IT1 = SqlProcessing<Table1>.ExeQuerys("select * from Table1");
             //string[][] data = FilesClasses.GetXMLData("", "person", "name,value");
             //FilesClasses.addXml("Config.xml", "root", "person", "name,value", "name1,value1");
             //for (int i = 0; i < data.Length; i++)
