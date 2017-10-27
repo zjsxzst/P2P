@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using P2P;
 using System.Xml;
+using P2P.DoMain;
 
 namespace P2P.DataBaseMessage
 {
@@ -24,6 +25,7 @@ namespace P2P.DataBaseMessage
         private void button1_Click(object sender, EventArgs e)
         {
             init();
+            IList<Table1> IT1 = SqlProcessing<Table1>.ExeQuerys("select * from Table1");
             //string[][] data = FilesClasses.GetXMLData("", "person", "name,value");
             //FilesClasses.addXml("Config.xml", "root", "person", "name,value", "name1,value1");
             //for (int i = 0; i < data.Length; i++)
@@ -43,6 +45,37 @@ namespace P2P.DataBaseMessage
             if (!File.Exists("Config.xml"))
             {
                 FilesClasses.InitXml();
+            }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked == true)
+            {
+                textBox2.PasswordChar = new char();
+            }
+            else
+                textBox2.PasswordChar = '■';
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (!File.Exists("Config.xml"))
+            {
+                if(FilesClasses.InitXml(textBox1.Text, textBox2.Text))
+                {
+                    textBox2.Text = "";
+                    textBox1.Text = "";
+                }
+                else
+                {
+                    MessageBox.Show("保存错误！");
+                }
             }
         }
     }

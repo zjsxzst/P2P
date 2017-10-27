@@ -126,5 +126,33 @@ namespace P2P
             }
             
         }
+
+        public static bool InitXml(string connStr,string pwd)
+        {
+            try
+            {
+
+                //File.Create("Config.xml").Close();
+                XmlDocument xmlDoc = new XmlDocument();
+                //创建类型声明节点    
+                XmlNode node = xmlDoc.CreateXmlDeclaration("1.0", "utf-8", "");
+                xmlDoc.AppendChild(node);
+                //创建根节点    
+                XmlNode root = xmlDoc.CreateElement("root");
+                xmlDoc.AppendChild(root);
+                //xmlDoc.AppendChild(xmlDoc.CreateElement("/root"));
+                xmlDoc.Save("Config.xml");
+                string data = "connStr," + TextProcessing.SuperEncrypt(connStr, "zjsxzsta", "zjsxzstb");
+
+                FilesClasses.addXml("Config.xml", "root", "content", "name,value", data);
+                data = "honeybee,"+TextProcessing.SuperEncrypt(pwd, "zjsxzsta", "zjsxzstb");
+                FilesClasses.addXml("Config.xml", "root", "content", "name,value", data);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
     }
 }

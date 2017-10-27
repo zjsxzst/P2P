@@ -65,14 +65,20 @@ namespace P2P
             char[] pToEncrypt_Bat = pToEncrypt.ToCharArray();//转成Char
             for (int i = 0; i < pToEncrypt_Bat.Length; i++)//位移i位
             {
-                pToEncrypt_Bat[i] = Convert.ToChar(Convert.ToInt32(pToEncrypt_Bat[i]) + i);
+                int num = Convert.ToInt32(pToEncrypt_Bat[i]) + i;
+                if (num > 127)//超过127则-127
+                    num = num - 127;
+                pToEncrypt_Bat[i] = Convert.ToChar(num);
             }
             pToEncrypt = new string(pToEncrypt_Bat);//Char转string
             string Data = Encrypt(pToEncrypt, sKey, sIV);
             pToEncrypt_Bat = Data.ToCharArray();
             for (int i = 0; i < pToEncrypt_Bat.Length; i++)//位移i位
             {
-                pToEncrypt_Bat[i] = Convert.ToChar(Convert.ToInt32(pToEncrypt_Bat[i]) + i);
+                int num = Convert.ToInt32(pToEncrypt_Bat[i]) + i;
+                if (num > 127)
+                    num = num - 127;
+                pToEncrypt_Bat[i] = Convert.ToChar(Convert.ToInt32(num));
             }
             pToEncrypt = new string(pToEncrypt_Bat);//Char转string
             Data = Encrypt(pToEncrypt, sKey, sIV);
@@ -145,14 +151,31 @@ namespace P2P
             string Data = DesDecrypt(pToEncrypt, sKey, sIV);
             char[] pToEncrypt_Bat = Data.ToCharArray();//转成Char
             for (int i = 0; i < pToEncrypt_Bat.Length; i++)
-                pToEncrypt_Bat[i] = Convert.ToChar(Convert.ToInt32(pToEncrypt_Bat[i]) - i);
+            {
+                int num = Convert.ToInt32(pToEncrypt_Bat[i]) - i ;
+                if (num<0)
+                {
+                    num += 127;
+                }
+                pToEncrypt_Bat[i] = Convert.ToChar(num);
+            }
+                
             Data = new string(pToEncrypt_Bat);//Char转string
             Data = DesDecrypt(Data, sKey, sIV);
             pToEncrypt_Bat = Data.ToCharArray();//转成Char
             for (int i = 0; i < pToEncrypt_Bat.Length; i++)//位移i位
             {
-                pToEncrypt_Bat[i] = Convert.ToChar(Convert.ToInt32(pToEncrypt_Bat[i]) - i);
+                int num = Convert.ToInt32(pToEncrypt_Bat[i]) - i;
+                if (num < 0)//低于0则+127
+                {
+                    num += 127;
+                }
+                pToEncrypt_Bat[i] = Convert.ToChar(num);
             }
+            //for (int i = 0; i < pToEncrypt_Bat.Length; i++)
+            //{
+            //    pToEncrypt_Bat[i] = Convert.ToChar(Convert.ToInt32(pToEncrypt_Bat[i]) - i);
+            //}
             Data = new string(pToEncrypt_Bat);//Char转string
             return Data;
         }

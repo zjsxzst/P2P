@@ -18,9 +18,9 @@ namespace P2P
         private static void Init()
         {
             string sql = "";
-            if (!string.IsNullOrWhiteSpace(PassWD) || !string.IsNullOrWhiteSpace(connStr))
+            if (string.IsNullOrWhiteSpace(PassWD) || string.IsNullOrWhiteSpace(connStr))
             {
-                string[][] data = FilesClasses.GetXMLData("", "root", "name,value");
+                string[][] data = FilesClasses.GetXMLData("", "content", "name,value");
                 for(int i=0;i<data.Length;i++)
                 {
 
@@ -28,7 +28,7 @@ namespace P2P
                     {
                         case "connStr":
                             sql = TextProcessing.SuperDesDecrypt(data[i][1], "zjsxzsta", "zjsxzstb");break;
-                        case "honeybee":PassWD = data[i][1];break;
+                        case "honeybee":PassWD = TextProcessing.SuperDesDecrypt(data[i][1], "zjsxzsta", "zjsxzstb"); break;
 
                     }
                     connStr = String.Format(sql, Flie_Path, PassWD);
