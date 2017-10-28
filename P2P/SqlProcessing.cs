@@ -8,36 +8,43 @@ using System.Threading.Tasks;
 
 namespace P2P
 {
+    /// <summary>
+    /// 错误的写法，暂时找不到更好的方式
+    /// </summary>
+    public class SqlData
+    {
+        /// <summary>
+        /// 连接字符串
+        /// </summary>
+        public string connStr { get; set; }
+        /// <summary>
+        /// 密码
+        /// </summary>
+        public string honeybee { get; set; }
+    }
     public class SqlProcessing<T> where T : new()
     {
         public static string Flie_Path = System.IO.Directory.GetCurrentDirectory() + "\\Data\\DATA.accdb";//当前路径
-        public static string PassWD = null;//获取数据库密码
+        private static string PassWD = null;//获取数据库密码
         private static DataTable dt;
         private static string connStr;//= String.Format("Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0}; Jet OLEDB:Database Password ={1}", Flie_Path, PassWD);//;
         private static OleDbConnection con = new OleDbConnection(connStr);   // TODO: 在此处添加构造函数逻辑
         private static void Init()
         {
-            string sql = "";
-            if (string.IsNullOrWhiteSpace(PassWD) || string.IsNullOrWhiteSpace(connStr))
-            {
-                string[][] data = FilesClasses.GetXMLData("", "content", "name,value");
-                for(int i=0;i<data.Length;i++)
-                {
-
-                    switch(data[i][0])
-                    {
-                        case "connStr":
-                            sql = TextProcessing.SuperDesDecrypt(data[i][1], "zjsxzsta", "zjsxzstb");break;
-                        case "honeybee":PassWD = TextProcessing.SuperDesDecrypt(data[i][1], "zjsxzsta", "zjsxzstb"); break;
-
-                    }
-                    connStr = String.Format(sql, Flie_Path, PassWD);
-                    con = new OleDbConnection(connStr);
-                }
-            }
-            
-
+            SqlData sd = new SqlData();
+            string data = "";
+            XmlTest<SqlData>.DSerialize(ref sd, "Config.xml", ref data);
+            PassWD = TextProcessing.SuperDesDecrypt(sd.honeybee, "zjsxzsta", "zjsxzstb");
+            connStr = String.Format(TextProcessing.SuperDesDecrypt(sd.connStr, "zjsxzsta", "zjsxzstb"), Flie_Path, PassWD);
+            con = new OleDbConnection(connStr);
+            //SqlProcessing<SqlData>.Init(sd.connStr, sd.honeybee);
         }
+        //public static void Init(string connStr,string honeybee)
+        //{
+        //    PassWD = TextProcessing.SuperDesDecrypt(honeybee, "zjsxzsta", "zjsxzstb");
+        //    connStr = String.Format(TextProcessing.SuperDesDecrypt(connStr, "zjsxzsta", "zjsxzstb"), Flie_Path, PassWD);
+        //    con = new OleDbConnection(connStr);
+        //}
         public static IList<T> ExeQuerys(string sql)
         {
             Init();
@@ -150,26 +157,13 @@ namespace P2P
         private static OleDbConnection con = new OleDbConnection(connStr);   // TODO: 在此处添加构造函数逻辑
         private static void Init()
         {
-            string sql = "";
-            if (string.IsNullOrWhiteSpace(PassWD) || string.IsNullOrWhiteSpace(connStr))
-            {
-                string[][] data = FilesClasses.GetXMLData("", "content", "name,value");
-                for (int i = 0; i < data.Length; i++)
-                {
-
-                    switch (data[i][0])
-                    {
-                        case "connStr":
-                            sql = TextProcessing.SuperDesDecrypt(data[i][1], "zjsxzsta", "zjsxzstb"); break;
-                        case "honeybee": PassWD = TextProcessing.SuperDesDecrypt(data[i][1], "zjsxzsta", "zjsxzstb"); break;
-
-                    }
-                    connStr = String.Format(sql, Flie_Path, PassWD);
-                    con = new OleDbConnection(connStr);
-                }
-            }
-
-
+            SqlData sd = new SqlData();
+            string data = "";
+            XmlTest<SqlData>.DSerialize(ref sd, "Config.xml", ref data);
+            PassWD = TextProcessing.SuperDesDecrypt(sd.honeybee, "zjsxzsta", "zjsxzstb");
+            connStr = String.Format(TextProcessing.SuperDesDecrypt(sd.connStr, "zjsxzsta", "zjsxzstb"), Flie_Path, PassWD);
+            con = new OleDbConnection(connStr);
+            //SqlProcessing<SqlData>.Init(sd.connStr, sd.honeybee);
         }
         public static DataTable ExeQuery(String sql)//查询
         {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using P2P.DoMain.Virtual;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,9 +15,12 @@ namespace P2P.DataBaseMessage
         [STAThread]
         static void Main()
         {
+            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
+            
         }
+        
     }
 }
